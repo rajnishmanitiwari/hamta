@@ -75,21 +75,22 @@
     var estimate=function(){
       var type=q('stay_type').value, guests=perRoom(), meals=q('meals').value==='yes', heater=q('heater')&&q('heater').checked;
       var rooms=Math.max(1,+q('rooms').value||1), out=d.getElementById('est-out'), note=d.getElementById('est-note');
-      var total=0, txt='';
+      var tg=Math.max(1,+q('total_guests').value||1), n2=Math.min(rooms,Math.max(0,tg-rooms)), split={n1:rooms-n2,n2:n2}, total=0, txt='';
+      var assume=(rooms>1&&meals||rooms>1&&type==='monthly')&&split.n1>0&&split.n2>0?' Assumes '+split.n2+' room'+(split.n2>1?'s':'')+' with 2 guests and '+split.n1+' with 1. The real amount depends on who shares which room.':'';
       if(type==='monthly'){
-        var months=Math.max(1,+q('months').value||1), duo=guests>=2;
-        var per=meals?(duo?R.monthly.duoMeals:R.monthly.soloMeals):(duo?R.monthly.duo:R.monthly.solo);
-        total=per*months*rooms+(heater?R.monthly.heater*months*rooms:0);
-        txt=fmt(total); note.textContent=rooms+' room'+(rooms>1?'s':'')+' x '+months+' month'+(months>1?'s':'')+(heater?', heater included':'')+'. Estimate only, not a final total. Peak dates are not priced here and cost more. An extra mattress for a third guest is quoted separately. We confirm the final amount before you pay.';
+        var months=Math.max(1,+q('months').value||1);
+        var s1=meals?R.monthly.soloMeals:R.monthly.solo, s2=meals?R.monthly.duoMeals:R.monthly.duo;
+        total=(split.n1*s1+split.n2*s2)*months+(heater?R.monthly.heater*months*rooms:0);
+        txt=fmt(total); note.textContent=rooms+' room'+(rooms>1?'s':'')+' x '+months+' month'+(months>1?'s':'')+(heater?', heater included':'')+'. Indicative only, not an amount to pay.'+assume+' Peak dates are not priced here and cost more. An extra mattress for a third guest is quoted separately. We confirm the final amount before you pay.';
       } else {
         if(!inEl.value||!outEl.value){out.textContent='Pick your dates';note.textContent='Nightly rate from '+fmt(R.nightly.room)+' per room.';return}
         var n=Math.round((new Date(outEl.value)-new Date(inEl.value))/864e5);
         if(n<1){out.textContent='Check-out must be after check-in';note.textContent='';return}
-        var perN=meals?(guests>=2?R.nightly.meal2:R.nightly.meal1):R.nightly.room;
-        total=perN*n*rooms; var disc=0;
+        var perNight=meals?(split.n1*R.nightly.meal1+split.n2*R.nightly.meal2):R.nightly.room*rooms;
+        total=perNight*n; var disc=0;
         if(n>=7){disc=total*R.weeklyDiscount; total-=disc}
         if(heater) total+=R.nightly.heater*n*rooms;
-        txt=fmt(total); note.textContent=n+' night'+(n>1?'s':'')+' x '+rooms+' room'+(rooms>1?'s':'')+(disc?', 15% weekly discount applied':'')+(heater?', heater included':'')+'. Estimate only, not a final total. Peak dates are not priced here and cost more. An extra mattress for a third guest is quoted separately. We confirm the final amount before you pay.';
+        txt=fmt(total); note.textContent=n+' night'+(n>1?'s':'')+' x '+rooms+' room'+(rooms>1?'s':'')+(disc?', 15% weekly discount applied':'')+(heater?', heater included':'')+'. Indicative only, not an amount to pay.'+assume+' Peak dates are not priced here and cost more. An extra mattress for a third guest is quoted separately. We confirm the final amount before you pay.';
       }
       out.textContent=txt;
     };

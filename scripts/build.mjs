@@ -291,12 +291,16 @@ body:`${pageHero('Around Hamta','Experiences','view-valley','Green valley with p
 /* MENU */
 pages.menu={title:'Food | The Hamta Homestay, Manali',desc:'Home cooking at The Hamta Homestay in Manali. Breakfast is included with every stay. Our in-house chef cooks more meals and sweets on request.',
 body:`${pageHero('Food','Eat well','hero-poster','The Hamta Homestay with its teal roof among pine forest')}
-<section><div class="wrap hb" style="max-width:860px">
-  <p class="lead">We have an in-house chef who cooks what you ask for, from everyday meals to sweets. Breakfast is included with every stay. Other food is an affordable add-on.</p>
-  <div class="callout"><b>Full meal package:</b> ₹2,500 per night for one guest, ₹3,000 for two sharing a room. Monthly with the full meal package: ₹24,000 for one, ₹30,000 for two.</div>
-  <h2 style="margin-top:36px">Our menu</h2>
-  <p>The full guest menu is being prepared and will be published on this page. Until then, tell us what you like when you book and we will plan around it, including any dietary needs.</p>
-  <div style="margin-top:30px"><a class="btn btn-gold" href="/book">Request your stay with meals</a></div>
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Home cooking from our own chef. Breakfast is included with every stay. More meals and sweets on request.</p></div></section>
+<section class="rooms-ed"><div class="wrap">
+  <figure class="re-a rv">${img('lounge-3','Long shared lounge with wooden tables and large windows',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
+  <figure class="re-b rv d1">${img('food-omelette','Plate of omelette',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
+</div></section>
+<section class="rates"><div class="wrap narrow">
+  <p class="kicker">The menu</p>
+  <p class="lead">The full guest menu is being prepared and will appear here. Until then, tell us what you like when you book, including any dietary needs, and we plan around it.</p>
+  <p class="lead" style="margin-top:18px">Prices for the full meal package are on the <a href="/stay" style="text-decoration:underline">rates page</a>.</p>
+  <div style="margin-top:34px"><a class="btn btn-dark" href="/book">Request your stay</a></div>
 </div></section>`};
 
 /* HANDBOOK */
@@ -344,7 +348,7 @@ body:`<section class="book-hero"><div class="wrap"><p class="kicker">Booking req
       <div class="row"><label>Guests in total<input type="number" name="total_guests" min="1" max="30" value="1" required></label><label>Of them, children under 12<input type="number" name="children" min="0" max="20" value="0"></label></div>
       <div class="row"><label>Meals<select name="meals"><option value="no">Stay with breakfast (included)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
       <label class="chk"><input type="checkbox" name="heater"> I will use a room heater (₹1,000 a day, ₹3,000 a month)</label>
-      <div class="est" aria-live="polite"><small>Indicative total</small><b id="est-out">Pick your dates</b><small id="est-note"></small></div>
+      <div class="est" aria-live="polite"><small>Indicative total, not an amount to pay</small><b id="est-out">Pick your dates</b><small id="est-note"></small></div>
     </fieldset>
     <fieldset data-step="2" hidden><legend>About you</legend>
       <div class="row"><label>Full name<input name="name" required autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label></div>
@@ -387,7 +391,7 @@ body:`<section style="padding-top:130px"><div class="wrap">
     <div class="rv"><h3>Find us</h3><p style="margin:12px 0 4px;color:var(--ink-2)">The Hamta Homestay<br>15th Mile, Hallan-i, Manali<br>Himachal Pradesh 175136, India<br>Plus code 45V6+J9 Hallan-i</p><p style="margin:6px 0;color:var(--ink-2);font-size:14px">Bookings and questions: hello@hamta.in. Help with an existing stay: support@hamta.in.</p><p style="margin:10px 0;color:var(--ink-2)">Your host: Kabir</p>
       <p style="margin:14px 0"><a data-email href="#" hidden style="text-decoration:underline"></a><br><a data-support href="#" hidden style="text-decoration:underline"></a><br><a data-phone href="#" hidden style="text-decoration:underline"></a></p>
       <p>${IG?`<a class="btn btn-line" href="${IG}" target="_blank" rel="noopener">Instagram</a> `:''}<a class="btn btn-line" href="${MAPS}" target="_blank" rel="noopener">Open in Google Maps</a></p>
-      <div class="frame wide reveal-img" style="margin-top:28px">${img('ext-day','Hamta Homestay from the road')}</div></div>
+      <div class="frame wide reveal-img" style="margin-top:28px">${img('ext-far','Hamta Homestay teal roof among pine forest')}</div></div>
   </div>
 </div></section>`};
 

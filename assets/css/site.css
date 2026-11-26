@@ -381,3 +381,22 @@ label small{font-weight:400;color:#6b7782;letter-spacing:0}label em{font-weight:
 .ftr a:hover{text-decoration:underline}
 .big-words .w{opacity:.38}
 @media(prefers-reduced-motion:reduce){.big-words .w{opacity:1!important}}
+/* v4c polish */
+.frame{border-radius:0}
+.callout{background:#f1f4f6;color:#1d2a33}
+.toc{border-bottom:1px solid rgba(20,30,40,.12)}.toc a{border-radius:0;border:1px solid rgba(20,30,40,.2);text-transform:uppercase;letter-spacing:.12em;font-size:12px}.toc a:hover{background:#111;color:#fff}
+.hb{padding-top:clamp(40px,6vw,80px)}
+.hb h2{font-family:var(--serif);text-transform:uppercase;font-weight:400;font-size:clamp(30px,4vw,52px);margin:64px 0 16px;padding-top:28px;border-top:1px solid rgba(20,30,40,.14)}
+.hb p,.hb li{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:#2c3a44;max-width:62ch}
+.hb .lead{font-family:var(--serif);font-size:clamp(24px,2.6vw,36px);line-height:1.25;color:#0f1a22}
+.box{border:1px solid rgba(20,30,40,.14)}
+.contact-h{font-weight:300}
+@media(max-width:700px){
+ .intro{padding:70px 0 36px}.s-intro{padding:56px 0 18px}
+ .pin{height:150vh}
+ .pin-img{--q:calc(1 - var(--p,0));clip-path:inset(calc(var(--q)*12%) calc(var(--q)*8%) calc(var(--q)*12%) calc(var(--q)*8%))}
+ .rooms-ed{padding:18px 0}.rates{padding:26px 0 56px}.rates .kicker{margin-bottom:14px}
+ .strips-sec{padding:30px 0 60px}.duo{padding:20px 0 50px}.rates-line{padding-bottom:50px}
+ .page-hero{height:64svh}
+}
+@media(max-width:700px){.page-hero img{object-position:50% 22%}}
