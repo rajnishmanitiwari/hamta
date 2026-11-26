@@ -3,8 +3,7 @@
   var words=d.querySelectorAll('[data-words]');
   words.forEach(function(el){
     var t=el.textContent.trim().split(/\s+/);
-    el.setAttribute('aria-label',el.textContent.trim());
-    el.innerHTML=t.map(function(w){return '<span class="w" aria-hidden="true">'+w+'</span>'}).join(' ');
+    el.innerHTML=t.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
   });
   d.querySelectorAll('[data-strips] .strip-i').forEach(function(a,i,all){
     a.addEventListener('click',function(e){

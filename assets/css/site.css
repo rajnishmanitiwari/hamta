@@ -379,7 +379,7 @@ label small{font-weight:400;color:#6b7782;letter-spacing:0}label em{font-weight:
 .ftr h4{color:#0f1a22}.ftr .big{color:#0f1a22}
 .ftr .bot{border-top:1px solid rgba(20,30,40,.14)}.ftr .bot a{color:#2c3a44}
 .ftr a:hover{text-decoration:underline}
-.big-words .w{opacity:.38}
+.big-words .w{opacity:.58}
 @media(prefers-reduced-motion:reduce){.big-words .w{opacity:1!important}}
 /* v4c polish */
 .frame{border-radius:0}
@@ -410,3 +410,9 @@ label small{font-weight:400;color:#6b7782;letter-spacing:0}label em{font-weight:
 .prose h1{font-weight:300;font-size:clamp(44px,7vw,96px)!important;letter-spacing:.02em}
 .prose .eyebrow{color:#4a5560}
 @media(max-width:700px){.hb h2{margin:34px 0 10px;padding-top:18px}.prose h2{margin:30px 0 10px;padding-top:16px}.hb{padding-top:26px}.toc{padding:10px 0}}
+
+.ftr .fh{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#0f1a22;margin-bottom:14px;font-weight:600}
+.page-hero h1{min-height:.95em}
+.strip span,.price-tag small,.ptable td small,.ptable th small{color:#5f6a64}.steps li{color:#5c6770}.steps li.on{color:#111}
+.note{color:#5f6a64}
+:root{--mute:#5f6a64}.est small{color:#5f6a64}

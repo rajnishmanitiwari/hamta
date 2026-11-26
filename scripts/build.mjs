@@ -34,7 +34,7 @@ ${(noindex||!LIVE)?'<meta name="robots" content="noindex,nofollow">':'<meta name
 <meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/assets/img/${ogimg}.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/oswald/v57/TK3IWkUHHAIjg75cFRf3bXL8LICs1_Fv40pKlN4NNSeSASz7FmlWHYjMdZwl.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_qE6KnTOig.woff2"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=Oswald:wght@500;600&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 ${schema}
@@ -44,7 +44,7 @@ ${schema}
 ${LIVE?'':'<div class="preview-tag">PREVIEW BUILD · not published</div>'}
 <header class="hdr${light?' light':''}">
   <div class="in">
-    <a class="logo" href="/" aria-label="The Hamta Homestay, home">${logoSvg}<span>Hamta<small>Homestay · Manali</small></span></a>
+    <a class="logo" href="/">${logoSvg}<span>Hamta<small>Homestay · Manali</small></span></a>
     <nav class="nav" aria-label="Main">
       ${NAV.map(([f,l])=>`<a href="/${f}"${file===f?' aria-current="page"':''}>${l}</a>`).join('')}
       <a class="btn btn-gold" href="/book">Book your stay</a>
@@ -63,9 +63,9 @@ ${fabHtml}
   <div class="wrap">
     <div class="g">
       <div><div class="big">Hamta</div><p style="margin-top:14px;max-width:34ch;opacity:.8">A mountain homestay in Manali for a night, a month, or a whole team. Warm hosts, home cooking, quiet views.</p></div>
-      <div><h4>Stay</h4><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="/book">Request a booking</a></div>
-      <div><h4>Guests</h4><a href="/menu">Menu</a><a href="/handbook">Handbook</a><a href="/experiences">Around Hamta</a><a href="/gallery">Gallery</a></div>
-      <div><h4>Say hello</h4><a href="/contact">Contact</a>${IG?`<a href="${IG}" rel="noopener" target="_blank">Instagram</a>`:''}<a data-email href="#" hidden></a><a data-support href="#" hidden></a><a data-phone href="#" hidden></a></div>
+      <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="/book">Request a booking</a></div>
+      <div><p class="fh">Guests</p><a href="/menu">Menu</a><a href="/handbook">Handbook</a><a href="/experiences">Around Hamta</a><a href="/gallery">Gallery</a></div>
+      <div><p class="fh">Say hello</p><a href="/contact">Contact</a>${IG?`<a href="${IG}" rel="noopener" target="_blank">Instagram</a>`:''}<a data-email href="#" hidden></a><a data-support href="#" hidden></a><a data-phone href="#" hidden></a></div>
     </div>
     <div class="bot"><span>© <span data-year>2026</span> The Hamta Homestay, 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136</span><span><a style="display:inline" href="/terms">Terms</a> · <a style="display:inline" href="/cancellation-refund">Cancellation</a> · <a style="display:inline" href="/house-rules">House rules</a> · <a style="display:inline" href="/privacy">Privacy</a></span></div>
   </div>
@@ -310,7 +310,7 @@ body:`${pageHero('Guest handbook','Before and during your stay','view-terrace','
   <p class="lead">A short guide for your stay. Specific details are shared by your host when your booking is confirmed.</p>
   <div class="toc"><a href="#arrive">Arrival</a><a href="#room">Your stay</a><a href="#food">Food</a><a href="#work">Work &amp; Wi-Fi</a><a href="#mountain">Mountain tips</a><a href="#help">Help</a></div>
   <h2 id="arrive">Arrival</h2><p>We are at 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136. Share your arrival time and we guide you in. Check-in is from 12 PM and check-out is at 11 AM the next day. You are welcome to arrive at any time of day, with no extra charge. Mountain roads and weather can slow you down, so plan some buffer.</p>
-  <h2 id="room">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is there is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹1,000 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
+  <h2 id="room">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹1,000 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
   <h2 id="food">Food</h2><p>Our cook prepares meals on request. See <a href="/menu" style="text-decoration:underline">food</a>. Tell us what you like and any dietary needs. Breakfast is included with every stay. Other meals are extra unless you take the full meal package.</p>
   <h2 id="work">Work &amp; Wi-Fi</h2><p>Wi-Fi and constant electricity are available. The shared lounge has work tables. Hill internet can dip in bad weather, so keep a backup plan for critical calls.</p>
   <h2 id="mountain">Mountain tips</h2><ul><li>Layers beat one big jacket. Evenings are cold even after a warm day.</li><li>Altitude: drink water, go slow on the first day.</li><li>Check weather and road status before trekking. Use licensed local guides for long routes.</li></ul>
