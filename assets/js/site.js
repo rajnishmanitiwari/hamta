@@ -108,7 +108,7 @@
       data._subject='NEW BOOKING REQUEST (payment pending) from the website, Hamta Homestay: '+(data.name||'guest')+', '+(data.check_in||''); data._template='table'; data._captcha='false';
       data.estimate_payment_status='PAYMENT PENDING, nothing paid online'; data.estimate='Estimated total '+d.getElementById('est-out').textContent+' | '+d.getElementById('est-note').textContent;
       btn.disabled=true; btn.textContent='Sending...';
-      var done=function(){f.reset();sync();msg.className='msg ok';msg.hidden=false;msg.textContent='Thank you. Your request is with us. We will reply with availability and a final quote, usually within a few hours.';btn.disabled=false;btn.textContent='Send booking request'};
+      var done=function(){f.reset();sync();msg.className='msg ok';msg.hidden=false;msg.textContent='Thank you. Your request is with us. We will reply with availability and a final quote.';btn.disabled=false;btn.textContent='Send booking request'};
       var fail=function(m){msg.className='msg err';msg.hidden=false;msg.textContent=m||('We could not send that. Nothing was sent. Please try again'+(H.email?' or email '+H.email:'')+'.');btn.disabled=false;btn.textContent='Send booking request'};
       if(!H.formLive||!H.formEndpoint){fail('Booking requests are not open yet. Nothing was sent. Please check back soon.');return}
       fetch(H.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})

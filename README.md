@@ -9,7 +9,7 @@ Fast, framework-free static website. White, editorial, mountain-first.
 - Photos: `assets/img/<name>.webp` (1600px) and `<name>-sm.webp` (800px). Hero video: `assets/video/hero.mp4`.
 
 ## Deploy
-Static output at repo root. On Vercel: Framework "Other", no build command, output directory `.`. `vercel.json` sets clean URLs and caching.
+Static output at repo root. On Vercel: Framework "Other". The project runs `npm run build` (regenerates HTML via `scripts/build.mjs`) with env `HAMTA_LIVE=1` (Production) so pages are indexable; without it the build outputs PREVIEW/noindex HTML. `vercel.json` must keep `"outputDirectory": "."` - bundle re-syncs must preserve it or deployments fail. `vercel.json` also sets clean URLs and caching.
 
 ## Forms
 Guest data goes by email through FormSubmit (third-party, disclosed on /privacy and the forms). Booking and contact forms POST JSON to `formEndpoint` (FormSubmit AJAX by default, sending to `bookings@hamta.in`). The first submission triggers a one-time activation email to that address; click it once. No payment is taken on the site.
