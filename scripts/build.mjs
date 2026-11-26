@@ -368,7 +368,7 @@ body:`<section class="book-hero"><div class="wrap"><p class="kicker">Booking req
     <fieldset data-step="4" hidden><legend>Review and send</legend>
       <div class="review" id="review" aria-live="polite"></div>
       <label class="chk"><input type="checkbox" name="agree" required><span>I have read the <a href="/cancellation-refund" target="_blank" rel="noopener" style="text-decoration:underline">cancellation policy</a> and <a href="/house-rules" target="_blank" rel="noopener" style="text-decoration:underline">house rules</a>, and I understand this is a request, not a confirmed booking.</span></label>
-      <p class="note" style="margin:0">After you send: we check availability, then reply with a final quote and how to pay. You pay in full in advance only after that. This form does not take payment details. Your details go to Hamta by email through FormSubmit, a third-party form service. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p>
+      <p class="note" style="margin:0">After you send: we check availability, then reply with a final quote and how to pay. You pay in advance only after that. This form does not take payment details. Your details go to Hamta by email through FormSubmit, a third-party form service. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p>
     </fieldset>
     <div class="wiz-nav"><button class="btn btn-line" type="button" id="w-back" hidden>Back</button><button class="btn btn-dark" type="button" id="w-next">Continue</button><button class="btn btn-gold" type="submit" id="w-send" hidden>Send booking request</button></div>
     <div id="form-msg" class="msg" hidden role="status"></div>
@@ -399,8 +399,8 @@ body:`<section style="padding-top:130px"><div class="wrap">
 const draftNote='';
 const prose=(t,d,b)=>({title:`${t} | The Hamta Homestay, Manali`,desc:d,light:true,body:`<section style="padding-top:140px"><div class="wrap prose"><p class="eyebrow">Policy</p><h1 style="font-size:clamp(38px,5vw,64px);margin:12px 0 26px">${t}</h1>${draftNote}${b}</div></section>`});
 pages.terms=prose('Terms &amp; conditions','Booking terms for The Hamta Homestay in Manali.',`
-<h2>Booking requests</h2><p>A request on this website is not a booking. A booking exists when Hamta confirms availability and price to you and you pay the advance.</p>
-<h2>Rates and payment</h2><p>Rates are in Indian rupees, per room, for up to two guests, and are the same for all guests. All taxes are included. Payment is made in full in advance, after we confirm availability and the price. Peak-date rates apply on national holidays, busy weekends, the last week of December, the first week of January and the first two weeks of February, and are confirmed before you pay.</p>
+<h2>Booking requests</h2><p>A request on this website is not a booking. A booking exists when Hamta confirms availability and price to you and you pay in advance.</p>
+<h2>Rates and payment</h2><p>Rates are in Indian rupees, per room, for up to two guests, and are the same for all guests. All taxes are included. Payment is made in advance, after we confirm availability and the final quote. Peak-date rates apply on national holidays, busy weekends, the last week of December, the first week of January and the first two weeks of February, and are confirmed before you pay.</p>
 <h2>Breakfast</h2><p>Breakfast is included with every stay, with or without the full meal package.</p>
 <h2>Check-in and check-out</h2><p>Check-in is from 12 PM. Check-out is at 11 AM the next day. You are welcome to arrive at any time of day, with no extra charge.</p>
 <h2>Monthly stays</h2><p>A month is the calendar month, first to last date, or 30 days. Three rooms are kept for monthly stays.</p>
