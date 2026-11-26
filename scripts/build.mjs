@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const SITE='https://hamta.in';
+const SITE='https://www.hamta.in';
 const NAME='The Hamta Homestay, Manali';
 const LIVE=process.env.HAMTA_LIVE==='1'; // default build is a noindex PREVIEW; set HAMTA_LIVE=1 only after owner approval
 const MAPS='https://www.google.com/maps/place/The+Hamta+Homestay+Manali/@32.1440721,77.1609703,17z/data=!3m1!4b1!4m9!3m8!1s0x39048b7177420655:0x760c7d2431095132!5m2!4m1!1i2!8m2!3d32.1440721!4d77.1609703!16s%2Fg%2F11z5d9dnh1';
@@ -407,6 +407,6 @@ for(const [file,p] of Object.entries(pages)){
   fs.writeFileSync(path.join(root,file+'.html'),layout({file,...p}));
   if(!p.noindex) urls.push(file==='index'?'':file);
 }
-fs.writeFileSync(path.join(root,'robots.txt'),LIVE?'User-agent: *\nAllow: /\nSitemap: https://hamta.in/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
+fs.writeFileSync(path.join(root,'robots.txt'),LIVE?'User-agent: *\nAllow: /\nSitemap: https://www.hamta.in/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
 fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u=>`  <url><loc>${SITE}/${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 console.log('built',Object.keys(pages).length,'pages');

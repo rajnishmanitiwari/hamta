@@ -3,7 +3,7 @@
 > Premium mountain homestay in Manali, Himachal Pradesh, India. Daily stays, monthly stays and group stays with meals cooked on request, free Wi-Fi, constant electricity, a cook and a cleaner, yoga and meditation, and Himalayan views.
 
 Address: 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136, India
-Website: https://hamta.in
+Website: https://www.hamta.in
 
 ## Rates (INR, per room, up to 2 guests)
 - Daily, room only: 2,000 per night. With meals: 2,500 (one guest) or 3,000 (two guests). Stays of 7 nights or more get 15% off. Heater electricity: 1,000 per day (3,000 per month for monthly stays), only if used. All taxes included. Peak dates (national holidays, busy weekends, last week of Dec, first week of Jan, first two weeks of Feb) cost more.
@@ -11,12 +11,12 @@ Website: https://hamta.in
 - Same prices for guests from India and abroad.
 
 ## Pages
-- https://hamta.in/stay : rooms and rates
-- https://hamta.in/monthly-stay : monthly and remote work stays
-- https://hamta.in/groups : groups, teams, students, travel agencies
-- https://hamta.in/menu : food menu
-- https://hamta.in/handbook : guest handbook
-- https://hamta.in/book : request a stay (request first, pay in advance on confirmation)
+- https://www.hamta.in/stay : rooms and rates
+- https://www.hamta.in/monthly-stay : monthly and remote work stays
+- https://www.hamta.in/groups : groups, teams, students, travel agencies
+- https://www.hamta.in/menu : food menu
+- https://www.hamta.in/handbook : guest handbook
+- https://www.hamta.in/book : request a stay (request first, pay in advance on confirmation)
 
 ## Facts
 - 8 rooms, each with a double bed (extra mattress for a third guest). Groups of 15 to 20 guests. 3 rooms are kept for monthly stays.
