@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=Oswald:wght@500;600&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 
 </head>
@@ -40,7 +40,7 @@
   <div class="split" style="align-items:start">
     <form class="form box" id="contactform"><input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label>Name<input name="name" required autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label>
-      <label>Message<textarea name="message" required></textarea></label>
+      <label>WhatsApp number <em>(optional)</em><input type="tel" name="phone" autocomplete="tel"></label><label>About<select name="topic"><option>A question about a stay</option><option>A group or team enquiry</option><option>Monthly stay</option><option>Something else</option></select></label><label>Message<textarea name="message" required></textarea></label>
       <p class="note" style="margin:0">Your message goes to Hamta by email through FormSubmit, a third-party form service. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p><button class="btn btn-dark" type="submit">Send message</button><div id="form-msg" class="msg" hidden role="status"></div></form>
     <div class="rv"><h3>Find us</h3><p style="margin:12px 0 4px;color:var(--ink-2)">The Hamta Homestay<br>15th Mile, Hallan-i, Manali<br>Himachal Pradesh 175136, India<br>Plus code 45V6+J9 Hallan-i</p><p style="margin:6px 0;color:var(--ink-2);font-size:14px">Bookings and questions: hello@hamta.in. Help with an existing stay: support@hamta.in.</p><p style="margin:10px 0;color:var(--ink-2)">Your host: Kabir</p>
       <p style="margin:14px 0"><a data-email href="#" hidden style="text-decoration:underline"></a><br><a data-support href="#" hidden style="text-decoration:underline"></a><br><a data-phone href="#" hidden style="text-decoration:underline"></a></p>
@@ -50,7 +50,6 @@
 </div></section>
 </main>
 
-<div class="ridge" aria-hidden="true"></div>
 <footer class="ftr">
   <div class="wrap">
     <div class="g">
@@ -64,5 +63,6 @@
 </footer>
 <script src="/assets/js/config.js" defer></script>
 <script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/motion.js" defer></script>
 </body>
 </html>

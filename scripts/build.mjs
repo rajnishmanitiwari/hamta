@@ -35,7 +35,7 @@ ${(noindex||!LIVE)?'<meta name="robots" content="noindex,nofollow">':'<meta name
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=Oswald:wght@500;600&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 ${schema}
 </head>
@@ -59,7 +59,6 @@ ${LIVE?'':'<div class="preview-tag">PREVIEW BUILD · not published</div>'}
 ${body}
 </main>
 ${fabHtml}
-<div class="ridge" aria-hidden="true"></div>
 <footer class="ftr">
   <div class="wrap">
     <div class="g">
@@ -73,11 +72,12 @@ ${fabHtml}
 </footer>
 <script src="/assets/js/config.js" defer></script>
 <script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/motion.js" defer></script>
 </body>
 </html>`;
 }
 
-const pageHero=(h,sub,image,alt)=>`<section class="page-hero">${img(image,alt,{eager:true,sizes:'100vw'})}<div class="wrap"><p class="eyebrow" style="color:var(--gold-2)">${sub}</p><h1>${h}</h1></div></section>`;
+const pageHero=(h,sub,image,alt)=>`<section class="page-hero" data-hero>${img(image,alt,{eager:true,sizes:'100vw'})}<div class="wrap"><p class="h-cap">${sub}</p><h1>${h}</h1></div></section>`;
 
 const lodging=`<script type="application/ld+json">${JSON.stringify({
   "@context":"https://schema.org","@type":"LodgingBusiness","name":"The Hamta Homestay",
@@ -290,7 +290,7 @@ body:`${pageHero('Around Hamta','Experiences','view-valley','Green valley with p
 
 /* MENU */
 pages.menu={title:'Food | The Hamta Homestay, Manali',desc:'Home cooking at The Hamta Homestay in Manali. Breakfast is included with every stay. Our in-house chef cooks more meals and sweets on request.',
-body:`${pageHero('Food','Eat well','lounge-5','Wooden table in the lounge at Hamta Homestay')}
+body:`${pageHero('Food','Eat well','hero-poster','The Hamta Homestay with its teal roof among pine forest')}
 <section><div class="wrap hb" style="max-width:860px">
   <p class="lead">We have an in-house chef who cooks what you ask for, from everyday meals to sweets. Breakfast is included with every stay. Other food is an affordable add-on.</p>
   <div class="callout"><b>Full meal package:</b> ₹2,500 per night for one guest, ₹3,000 for two sharing a room. Monthly with the full meal package: ₹24,000 for one, ₹30,000 for two.</div>
@@ -301,7 +301,7 @@ body:`${pageHero('Food','Eat well','lounge-5','Wooden table in the lounge at Ham
 
 /* HANDBOOK */
 pages.handbook={title:'Guest Handbook | The Hamta Homestay, Manali',desc:'Everything to know for your stay at The Hamta Homestay, Manali: arrival, rooms, meals, Wi-Fi, mountain tips and house notes.',
-body:`${pageHero('Guest handbook','Before and during your stay','corridor-view','Corridor with view of pines and mountains')}
+body:`${pageHero('Guest handbook','Before and during your stay','view-terrace','Clouds over green mountains from the Hamta terrace')}
 <section><div class="wrap hb" style="max-width:860px">
   <p class="lead">A short guide for your stay. Specific details are shared by your host when your booking is confirmed.</p>
   <div class="toc"><a href="#arrive">Arrival</a><a href="#room">Your stay</a><a href="#food">Food</a><a href="#work">Work &amp; Wi-Fi</a><a href="#mountain">Mountain tips</a><a href="#help">Help</a></div>
@@ -323,35 +323,57 @@ pages.gallery={title:'Photo Gallery | The Hamta Homestay, Manali',desc:'Photos o
 body:`${pageHero('Gallery','See the place','view-sunset','Orange sunset over the Himalayan ridge')}
 <section><div class="wrap">
   <div class="chips" role="group" aria-label="Filter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="Rooms" aria-pressed="false">Rooms</button><button class="chip" data-f="Lounge" aria-pressed="false">Lounge &amp; food</button><button class="chip" data-f="Exterior" aria-pressed="false">Building</button><button class="chip" data-f="Views" aria-pressed="false">Views</button></div>
-  <div class="mosaic">${G.map(([n,c,a])=>`<button data-c="${c==='Lounge'?'Lounge':c}" data-full="/assets/img/${n}.webp" aria-label="Open photo: ${a}"><img src="/assets/img/${n}-sm.webp" alt="${a}" loading="lazy" decoding="async"></button>`).join('')}</div>
+  <div class="mosaic">${G.filter(x=>!['ext-close','ext-night','bath-1','bath-2','desks','workspace','lounge-4','lounge-5','balcony-seat'].includes(x[0])).map(([n,c,a])=>`<button data-c="${c==='Lounge'?'Lounge':c}" data-full="/assets/img/${n}.webp" aria-label="Open photo: ${a}"><img src="/assets/img/${n}-sm.webp" alt="${a}" loading="lazy" decoding="async"></button>`).join('')}</div>
   <p class="note">All photos are of the homestay and its surroundings.</p>
 </div></section>
 <div class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="x" aria-label="Close">×</button><button class="p" aria-label="Previous">‹</button><img alt=""><button class="n" aria-label="Next">›</button></div>`};
 
+import bodiesFn from './bodies.mjs';
+const B=bodiesFn(img,{pageHero});
+pages.index.body=B.index;pages.stay.body=B.stay;pages['monthly-stay'].body=B.monthly;pages.groups.body=B.groups;pages.experiences.body=B.exp;
 /* BOOK */
 pages.book={title:'Request a Stay | The Hamta Homestay, Manali',desc:'Request a daily, monthly or group stay at The Hamta Homestay in Manali. We reply with availability and a final quote.',light:true,
-body:`<section style="padding-top:130px"><div class="wrap">
-  <div class="sec-head"><p class="eyebrow">Booking request</p><h1 style="font-size:clamp(40px,6vw,76px)">Request your stay</h1><p class="lead">Tell us when and how long. We check availability and reply with a clear quote.</p></div>
-  <div class="split" style="align-items:start">
-    <form class="form box" id="bookform">
-      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="row"><label>Name<input name="name" required autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label></div>
-      <div class="row"><label>Phone / WhatsApp<input type="tel" name="phone" required autocomplete="tel"></label><label>Where are you from?<input name="country" autocomplete="country-name" placeholder="City or country"></label></div>
-      <div class="row"><label>Stay type<select name="stay_type"><option value="daily">Daily (up to a few weeks)</option><option value="monthly">Monthly (one month or more)</option><option value="group">Group</option></select></label><label>Rooms<input type="number" name="rooms" min="1" max="8" value="1"></label></div>
+body:`<section class="book-hero"><div class="wrap"><p class="kicker">Booking request</p><h1>Request your stay</h1><p class="serif-i"><span class="sr" id="stepsr" aria-live="polite">Step 1 of 4</span>Four short steps. Nothing is charged online. <span id="ref-wrap">Your reference: <b id="ref-out">HM-</b></span></p></div></section>
+<section class="book-sec"><div class="wrap book-g">
+  <form class="form wiz" id="bookform" novalidate>
+    <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <ol class="steps" aria-hidden="true"><li class="on">Stay</li><li>You</li><li>Make it yours</li><li>Review</li></ol>
+    <fieldset data-step="1"><legend>Your stay</legend>
+      <div class="row"><label>Type of stay<select name="stay_type"><option value="daily">A few nights</option><option value="monthly">A month or more</option><option value="group">A group</option></select></label><label>Rooms<input type="number" name="rooms" min="1" max="8" value="1" required></label></div>
       <div class="row"><label>Check-in<input type="date" name="check_in" required></label><label class="only-daily">Check-out<input type="date" name="check_out"></label><label class="only-monthly" hidden>Months<input type="number" name="months" min="1" max="12" value="1"></label></div>
-      <div class="row"><label>Guests per room<select name="guests"><option value="1">1</option><option value="2">2</option></select></label><label>Meals<select name="meals"><option value="no">Breakfast included</option><option value="yes">Full meal package</option></select></label></div>
-      <label style="display:flex;gap:10px;align-items:center;font-weight:500"><input type="checkbox" name="heater" style="width:20px;min-height:20px"> I will use a room heater (₹1,000 a day, ₹3,000 a month)</label>
-      <label>Anything we should know?<textarea name="notes" placeholder="Group size, dietary needs, remote work, yoga, arrival time"></textarea></label>
+      <div class="row"><label>Guests in total<input type="number" name="total_guests" min="1" max="30" value="1" required></label><label>Of them, children under 12<input type="number" name="children" min="0" max="20" value="0"></label></div>
+      <div class="row"><label>Meals<select name="meals"><option value="no">Stay with breakfast (included)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
+      <label class="chk"><input type="checkbox" name="heater"> I will use a room heater (₹1,000 a day, ₹3,000 a month)</label>
       <div class="est" aria-live="polite"><small>Indicative total</small><b id="est-out">Pick your dates</b><small id="est-note"></small></div>
-      <button class="btn btn-gold" type="submit" style="width:100%">Send booking request</button>
-      <div id="form-msg" class="msg" hidden role="status"></div>
-      <p class="note" style="margin-top:0">This is a request, not a confirmed booking. We confirm availability and the final price, then you pay in full in advance. Your details are sent to Hamta by email through FormSubmit, a third-party form service, and used only to reply to you. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p>
-    </form>
-    <div class="rv"><div class="frame wide reveal-img" style="margin-bottom:24px">${img('room-a3','Double room ready for guests')}</div>
-      <h3>What happens next</h3><ul class="ticks"><li>We check availability for your dates</li><li>You get a clear quote, including any peak-date change</li><li>You pay in full in advance to confirm the booking</li><li>Check-in is from 12 PM, and you can arrive at any time</li></ul>
-      <p style="margin-top:22px"><a class="btn btn-dark" data-wa="Hello, I would like to book at The Hamta Homestay." href="#" hidden target="_blank" rel="noopener">Chat on WhatsApp</a></p></div>
-  </div>
+    </fieldset>
+    <fieldset data-step="2" hidden><legend>About you</legend>
+      <div class="row"><label>Full name<input name="name" required autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label></div>
+      <div class="row"><label>WhatsApp number<input type="tel" name="phone" required autocomplete="tel" placeholder="+91..."><small>We confirm availability and share your quote here.</small></label><label>City and country<input name="country" required autocomplete="country-name" placeholder="Where you are travelling from"></label></div>
+      <div class="row"><label>You are<select name="traveller_type" required><option value="">Choose</option><option>Remote worker</option><option>Solo traveller</option><option>Couple</option><option>Friends</option><option>Family</option><option>Team or organisation</option><option>Other</option></select></label><label>Instagram or LinkedIn <em>(optional)</em><input name="social" autocomplete="off"></label></div>
+      <div class="row"><label>Best way to reach you<select name="preferred_contact"><option>WhatsApp</option><option>Email</option><option>Either</option></select></label></div>
+    </fieldset>
+    <fieldset data-step="3" hidden><legend>Make it yours</legend>
+      <p class="note" style="margin:0 0 4px">All optional. It helps us prepare the room, the food and the first evening.</p>
+      <div class="row"><label>What brings you<select name="intention"><option value="">Choose</option><option>Rest and reset</option><option>Work remotely</option><option>Trekking and the outdoors</option><option>Yoga and wellness</option><option>A celebration</option><option>Exploring Manali</option><option>Other</option></select></label><label>Food preference<select name="diet"><option value="">No preference</option><option>Vegetarian</option><option>Eggetarian</option><option>Non-vegetarian</option><option>Vegan</option><option>Jain</option></select></label></div>
+      <label>Allergies or food needs<input name="allergies" placeholder="For example nuts, gluten, dairy"></label>
+      <div class="row"><label>Expected arrival time<input name="arrival_time" placeholder="For example 2 PM"></label><label>Coming by<select name="transport"><option value="">Not sure</option><option>Own car or bike</option><option>Taxi</option><option>Bus</option><option>Flight to Bhuntar then taxi</option></select></label></div>
+      <fieldset class="inline"><legend>Interested in</legend><label class="chk"><input type="checkbox" name="int_yoga" value="yes"> Yoga or meditation</label><label class="chk"><input type="checkbox" name="int_trek" value="yes"> Treks and walks</label><label class="chk"><input type="checkbox" name="int_work" value="yes"> A quiet work setup</label><label class="chk"><input type="checkbox" name="pet" value="yes"> Travelling with a pet</label></fieldset>
+      <label>Anything we should know<textarea name="notes" placeholder="An occasion, accessibility needs, early check-in, a quiet room, anything else"></textarea></label>
+      <label>How did you find us<select name="heard_from"><option value="">Choose</option><option>Google</option><option>Instagram</option><option>A friend</option><option>A travel site</option><option>Other</option></select></label>
+    </fieldset>
+    <fieldset data-step="4" hidden><legend>Review and send</legend>
+      <div class="review" id="review" aria-live="polite"></div>
+      <label class="chk"><input type="checkbox" name="agree" required><span>I have read the <a href="/cancellation-refund" target="_blank" rel="noopener" style="text-decoration:underline">cancellation policy</a> and <a href="/house-rules" target="_blank" rel="noopener" style="text-decoration:underline">house rules</a>, and I understand this is a request, not a confirmed booking.</span></label>
+      <p class="note" style="margin:0">After you send: we check availability, then reply with a final quote and how to pay. You pay in full in advance only after that. This form does not take any payment or ID details. Your details go to Hamta by email through FormSubmit, a third-party form service. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p>
+    </fieldset>
+    <div class="wiz-nav"><button class="btn btn-line" type="button" id="w-back" hidden>Back</button><button class="btn btn-dark" type="button" id="w-next">Continue</button><button class="btn btn-gold" type="submit" id="w-send" hidden>Send booking request</button></div>
+    <div id="form-msg" class="msg" hidden role="status"></div>
+  </form>
+  <aside class="book-side"><figure>${img('view-valley','Green valley and pine trees under Himalayan cloud',{sizes:'(max-width:860px) 92vw, 34vw'})}</figure>
+    <ol class="next"><li><b>01</b> We check your dates</li><li><b>02</b> You get a clear quote and payment details</li><li><b>03</b> You pay in advance to confirm</li></ol>
+    <p><a class="btn btn-line" data-wa="Hello, I would like to book at The Hamta Homestay." href="#" hidden target="_blank" rel="noopener">Prefer WhatsApp</a></p></aside>
 </div></section>`};
+
 
 /* CONTACT */
 pages.contact={title:'Contact | The Hamta Homestay, Manali',desc:'Contact The Hamta Homestay at 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136.',light:true,
@@ -360,7 +382,7 @@ body:`<section style="padding-top:130px"><div class="wrap">
   <div class="split" style="align-items:start">
     <form class="form box" id="contactform"><input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label>Name<input name="name" required autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label>
-      <label>Message<textarea name="message" required></textarea></label>
+      <label>WhatsApp number <em>(optional)</em><input type="tel" name="phone" autocomplete="tel"></label><label>About<select name="topic"><option>A question about a stay</option><option>A group or team enquiry</option><option>Monthly stay</option><option>Something else</option></select></label><label>Message<textarea name="message" required></textarea></label>
       <p class="note" style="margin:0">Your message goes to Hamta by email through FormSubmit, a third-party form service. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p><button class="btn btn-dark" type="submit">Send message</button><div id="form-msg" class="msg" hidden role="status"></div></form>
     <div class="rv"><h3>Find us</h3><p style="margin:12px 0 4px;color:var(--ink-2)">The Hamta Homestay<br>15th Mile, Hallan-i, Manali<br>Himachal Pradesh 175136, India<br>Plus code 45V6+J9 Hallan-i</p><p style="margin:6px 0;color:var(--ink-2);font-size:14px">Bookings and questions: hello@hamta.in. Help with an existing stay: support@hamta.in.</p><p style="margin:10px 0;color:var(--ink-2)">Your host: Kabir</p>
       <p style="margin:14px 0"><a data-email href="#" hidden style="text-decoration:underline"></a><br><a data-support href="#" hidden style="text-decoration:underline"></a><br><a data-phone href="#" hidden style="text-decoration:underline"></a></p>

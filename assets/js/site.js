@@ -68,10 +68,12 @@
   var fmt=function(n){return '\u20B9'+Math.round(n).toLocaleString('en-IN')};
   if(f){
     var R=H.rates, q=function(n){return f.elements[n]};
+    var perRoom=function(){var t=Math.max(1,+q('total_guests').value||1),r=Math.max(1,+q('rooms').value||1);return Math.min(2,Math.ceil(t/r))};
+    var capErr=function(){var t=+q('total_guests').value||1,r=+q('rooms').value||1,c=+q('children').value||0;if(c>t)return 'Children cannot be more than total guests.';var cap=r*2+(q('extra_mattress').checked?r:0);if(t>cap)return 'Each room hosts 2 guests, and a third fits on an extra mattress. For '+t+' guests please add rooms or tick the extra mattress box.';return ''};
     var inEl=q('check_in'), outEl=q('check_out'), today=new Date().toISOString().slice(0,10);
     inEl.min=today; outEl.min=today;
     var estimate=function(){
-      var type=q('stay_type').value, guests=+q('guests').value||1, meals=q('meals').value==='yes', heater=q('heater')&&q('heater').checked;
+      var type=q('stay_type').value, guests=perRoom(), meals=q('meals').value==='yes', heater=q('heater')&&q('heater').checked;
       var rooms=Math.max(1,+q('rooms').value||1), out=d.getElementById('est-out'), note=d.getElementById('est-note');
       var total=0, txt='';
       if(type==='monthly'){
@@ -97,6 +99,22 @@
       d.querySelectorAll('.only-monthly').forEach(function(e){e.hidden=!m});
       inEl.required=true; outEl.required=!m; estimate();
     };
+    var ref=sessionStorage.getItem('hm_ref');
+    if(!ref){var A='ABCDEFGHJKMNPQRSTUVWXYZ23456789',r='';var u=new Uint8Array(5);(window.crypto||{getRandomValues:function(a){for(var i=0;i<a.length;i++)a[i]=Math.random()*256}}).getRandomValues(u);for(var i=0;i<5;i++)r+=A[u[i]%A.length];var t=new Date();ref='HM-'+String(t.getFullYear()).slice(2)+String(t.getMonth()+1).padStart(2,'0')+String(t.getDate()).padStart(2,'0')+'-'+r;try{sessionStorage.setItem('hm_ref',ref)}catch(e){}}
+    var refOut=d.getElementById('ref-out'); if(refOut) refOut.textContent=ref;
+    var steps=[].slice.call(f.querySelectorAll('fieldset[data-step]')), cur=0, lis=f.querySelectorAll('.steps li');
+    var bk=d.getElementById('w-back'), nx=d.getElementById('w-next'), sd=d.getElementById('w-send');
+    var label=function(el){var l=el.closest('label');return l?l.firstChild.textContent.trim():el.name};
+    var buildReview=function(){
+      var rows=[['Reference',ref],['Stay',q('stay_type').value+', '+q('rooms').value+' room(s)'],['Check-in',q('check_in').value],['Check-out',q('stay_type').value==='monthly'?(q('months').value+' month(s)'):q('check_out').value],['Guests',q('total_guests').value+' (children '+q('children').value+')'+(q('extra_mattress').checked?', extra mattress':'')],['Meals',q('meals').value==='yes'?'Full meal package':'Stay with breakfast'],['Name',q('name').value],['WhatsApp',q('phone').value],['Email',q('email').value],['Indicative total',d.getElementById('est-out').textContent]];
+      d.getElementById('review').innerHTML=rows.map(function(r){var a=d.createElement('div');a.className='rv-row';var b=d.createElement('span');b.textContent=r[0];var c=d.createElement('b');c.textContent=r[1]||'-';a.appendChild(b);a.appendChild(c);return a.outerHTML}).join('');
+    };
+    var go=function(n){cur=n;var sr=d.getElementById('stepsr');if(sr)sr.textContent='Step '+(n+1)+' of 4';steps.forEach(function(s,i){s.hidden=i!==n});lis.forEach(function(l,i){l.classList.toggle('on',i<=n)});bk.hidden=n===0;nx.hidden=n===steps.length-1;sd.hidden=n!==steps.length-1;if(n===steps.length-1)buildReview();var fi=steps[n].querySelector('input,select,textarea');if(fi&&n>0)try{fi.focus({preventScroll:true})}catch(e){};var top=f.getBoundingClientRect().top+scrollY-110;scrollTo({top:Math.max(0,top),behavior:'smooth'})};
+    var okStep=function(){if(cur===0){var ce=capErr();if(ce){var g=q('total_guests');g.setCustomValidity(ce);g.reportValidity();g.setCustomValidity('');return false}}var els=[].slice.call(steps[cur].querySelectorAll('input,select,textarea'));for(var i=0;i<els.length;i++){if(!els[i].checkValidity()){els[i].reportValidity();return false}}
+      if(cur===0&&q('stay_type').value!=='monthly'&&inEl.value&&outEl.value&&new Date(outEl.value)<=new Date(inEl.value)){outEl.setCustomValidity('Check-out must be after check-in');outEl.reportValidity();outEl.setCustomValidity('');return false}
+      return true};
+    nx.addEventListener('click',function(){if(okStep())go(cur+1)}); bk.addEventListener('click',function(){go(cur-1)});
+    f.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA'&&cur<steps.length-1){e.preventDefault();nx.click()}});
     f.addEventListener('input',estimate); f.addEventListener('change',sync);
     var qs=new URLSearchParams(location.search); if(qs.get('type')==='monthly'){q('stay_type').value='monthly'}
     sync();
@@ -104,11 +122,13 @@
       e.preventDefault();
       var msg=d.getElementById('form-msg'), btn=f.querySelector('button[type=submit]');
       if(f.elements['_gotcha'].value) return;
+      if(!f.elements.agree.checked){msg.className='msg err';msg.hidden=false;msg.textContent='Please tick the box to confirm you have read the policies.';return}
       var data={}; new FormData(f).forEach(function(v,k){if(k!=='_gotcha')data[k]=v});
-      data._subject='NEW BOOKING REQUEST (payment pending) from the website, Hamta Homestay: '+(data.name||'guest')+', '+(data.check_in||''); data._template='table'; data._captcha='false';
+      data.request_reference=ref; data.guests_per_room_for_estimate=String(perRoom()); data._replyto=data.email; data.guest_whatsapp_for_payment_link=data.phone;
+      data._subject='NEW BOOKING REQUEST '+ref+' (payment pending): '+(data.name||'guest')+', '+(data.check_in||''); data._template='table'; data._captcha='false';
       data.estimate_payment_status='PAYMENT PENDING, nothing paid online'; data.estimate='Estimated total '+d.getElementById('est-out').textContent+' | '+d.getElementById('est-note').textContent;
       btn.disabled=true; btn.textContent='Sending...';
-      var done=function(){f.reset();sync();msg.className='msg ok';msg.hidden=false;msg.textContent='Thank you. Your request is with us. We will reply with availability and a final quote.';btn.disabled=false;btn.textContent='Send booking request'};
+      var done=function(){try{sessionStorage.removeItem('hm_ref')}catch(e){};f.querySelectorAll('fieldset,.wiz-nav,.steps').forEach(function(e){e.hidden=true});msg.className='msg ok';msg.hidden=false;msg.textContent='Thank you. Your request '+ref+' is with us. We will reply with availability and a final quote. Nothing has been charged and the booking is not confirmed yet.';btn.disabled=false;btn.textContent='Send booking request'};
       var fail=function(m){msg.className='msg err';msg.hidden=false;msg.textContent=m||('We could not send that. Nothing was sent. Please try again'+(H.email?' or email '+H.email:'')+'.');btn.disabled=false;btn.textContent='Send booking request'};
       if(!H.formLive||!H.formEndpoint){fail('Booking requests are not open yet. Nothing was sent. Please check back soon.');return}
       fetch(H.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
