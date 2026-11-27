@@ -14,7 +14,7 @@ const index=`
 <section class="intro">
   <div class="wrap">
     <p class="kicker">01 / The house</p>
-    <p class="big-words" data-words>A homestay in the pines above the Manali valley. Wood-lined rooms, home cooking and the Himalaya at the window.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="/workation" style="text-decoration:underline;text-underline-offset:4px">Planning a team workation? Slow down and work with intent in Manali.</a></p>
+    <p class="big-words" data-words>A homestay in the pines above the Manali valley. Wood-lined rooms, home cooking and the Himalaya at the window.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="https://workation.hamta.in/" style="text-decoration:underline;text-underline-offset:4px">Planning a team workation? Slow down and work with intent in Manali.</a></p>
     <p class="aside">By the night, by the month, or for your whole group.</p>
   </div>
 </section>
@@ -92,7 +92,7 @@ const stay=`${pageHero('Stay','Rooms and rates','room-2','Bedroom with a wooden 
 </div></section>`;
 
 const monthly=`${pageHero('Live here for a month','Monthly stays','lounge','Long wooden lounge with large windows at The Hamta Homestay')}
-<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Your office has a Himalaya outside. Constant electricity, Wi-Fi, a shared lounge with work tables, and nobody rushing you.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="/workation" style="text-decoration:underline;text-underline-offset:4px">Want structure around the stay? See our 7 day workation in Manali.</a></p></div></section>
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Your office has a Himalaya outside. Constant electricity, Wi-Fi, a shared lounge with work tables, and nobody rushing you.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="https://workation.hamta.in/" style="text-decoration:underline;text-underline-offset:4px">Want structure around the stay? See our 7 day workation in Manali.</a></p></div></section>
 <section class="rooms-ed"><div class="wrap">
   <figure class="re-a rv">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
   <figure class="re-b rv d1">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
@@ -109,7 +109,7 @@ const monthly=`${pageHero('Live here for a month','Monthly stays','lounge','Long
 </div></section>`;
 
 const groups=`${pageHero('Bring your people','Groups','night','Hamta Homestay lit up at night among flowers')}
-<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Groups of 15 to 20 across eight rooms. Teams, students, nonprofits and travel agencies. One house, one table, a lot of quiet.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="/workation" style="text-decoration:underline;text-underline-offset:4px">Teams, universities and organisations: see our workation in Manali.</a></p></div></section>
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Groups of 15 to 20 across eight rooms. Teams, students, nonprofits and travel agencies. One house, one table, a lot of quiet.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="https://workation.hamta.in/" style="text-decoration:underline;text-underline-offset:4px">Teams, universities and organisations: see our workation in Manali.</a></p></div></section>
 <section class="rooms-ed"><div class="wrap">
   <figure class="re-a rv">${img('night','Hamta Homestay lit up at night among flowers',{sizes:'(max-width:860px) 70vw, 34vw'})}</figure>
   <figure class="re-c rv d1">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 44vw'})}</figure>

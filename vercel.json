@@ -29,17 +29,5 @@
       ]
     }
   ],
-  "outputDirectory": ".",
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "workation.hamta.in"
-        }
-      ],
-      "destination": "/workation"
-    }
-  ]
+  "outputDirectory": "."
 }

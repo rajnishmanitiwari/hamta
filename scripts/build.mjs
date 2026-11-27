@@ -4,6 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const SITE='https://www.hamta.in';
+const WK='https://workation.hamta.in';
 const NAME='The Hamta Homestay, Manali';
 const LIVE=process.env.HAMTA_LIVE==='1'; // default build is a noindex PREVIEW; set HAMTA_LIVE=1 only after owner approval
 const MAPS='https://www.google.com/maps/place/The+Hamta+Homestay+Manali/@32.1440721,77.1609703,17z/data=!3m1!4b1!4m9!3m8!1s0x39048b7177420655:0x760c7d2431095132!5m2!4m1!1i2!8m2!3d32.1440721!4d77.1609703!16s%2Fg%2F11z5d9dnh1';
@@ -18,7 +19,7 @@ const logoSvg=`<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle c
 
 function layout({file,title,desc,body,light=false,schema='',ogimg='og',noindex=false}){
   const fabHtml=(file==='book'||file==='contact'||file==='404')?'':`<div class="fab off"><a class="btn btn-gold" href="/book">Request a stay</a><a class="btn btn-dark" data-wa="Hello, I would like to stay at The Hamta Homestay." href="#" hidden target="_blank" rel="noopener">WhatsApp</a></div>`;
-  const url=`${SITE}/${file==='index'?'':file}`;
+  const url=file==='workation'?`${WK}/`:`${SITE}/${file==='index'?'':file}`;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -63,7 +64,7 @@ ${fabHtml}
   <div class="wrap">
     <div class="g">
       <div><div class="big">Hamta</div><p style="margin-top:14px;max-width:34ch;opacity:.8">Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.</p></div>
-      <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="/workation">Workation</a><a href="/book">Request a booking</a></div>
+      <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="https://workation.hamta.in/">Workation</a><a href="/book">Request a booking</a></div>
       <div><p class="fh">Guests</p><a href="/menu">Menu</a><a href="/handbook">Handbook</a><a href="/experiences">Around Hamta</a><a href="/gallery">Gallery</a></div>
       <div><p class="fh">Say hello</p><a href="/contact">Contact</a>${IG?`<a href="${IG}" rel="noopener" target="_blank">Instagram</a>`:''}<a data-email href="#" hidden></a><a data-support href="#" hidden></a><a data-phone href="#" hidden></a></div>
     </div>
@@ -434,9 +435,11 @@ pages.about=aboutFn({img,pageHero,PH:ABOUT_PH});
 import workationFn from './workation.mjs'; pages.workation=workationFn();
 const urls=[];
 for(const [file,p] of Object.entries(pages)){
-  fs.writeFileSync(path.join(root,file+'.html'),layout({file,...p}));
+  let out=layout({file,...p});
+  if(file==='workation') out=out.replace(/href="\/(?!assets\/|favicon|apple-touch)([^"]*)"/g,(m,x)=>x==='workation'?`href="${WK}/"`:`href="${SITE}/${x}"`);
+  fs.writeFileSync(path.join(root,file+'.html'),out);
   if(!p.noindex&&!p.nosite) urls.push(file==='index'?'':file);
 }
 fs.writeFileSync(path.join(root,'robots.txt'),LIVE?'User-agent: *\nAllow: /\nSitemap: https://www.hamta.in/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
-fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u=>`  <url><loc>${SITE}/${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u=>`  <url><loc>${u==='workation'?WK+'/':SITE+'/'+u}</loc></url>`).join('\n')}\n</urlset>\n`);
 console.log('built',Object.keys(pages).length,'pages');
