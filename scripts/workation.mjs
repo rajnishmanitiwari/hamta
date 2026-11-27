@@ -46,7 +46,7 @@ export default function workation(){
   note({t:'Work tables in the shared lounge',cls:'w6',r:'-4deg',dy:'0px',icon:'laptop'}),
   card({n:'act-1',alt:'A paraglider above snow-dusted mountains and pine forest, an activity guests go to',cap:'Places and activities guests go to',cls:'w7',ar:'4/3',r:'2deg'}),
   card({n:'night',alt:'The Hamta Homestay building lit up at night',cap:'Evenings at the house',cls:'w8',ar:'3/4',r:'-2.4deg',dy:'34px'}),
-  note({t:'Home cooking, breakfast included',cls:'w9',r:'3deg',icon:'bowl'}),
+  note({t:'Home cooking from our own chef',cls:'w9',r:'3deg',icon:'bowl'}),
   card({n:'view-3',alt:'A river running below snow-dusted mountains, nearby',cap:'The river, close by',cls:'w10',ar:'4/3',r:'2.6deg'}),
   card({n:'room-5',alt:'Wood-lined bedroom at The Hamta Homestay',cap:'A room at the house',cls:'w11',ar:'8/7',r:'-2deg',dy:'20px'}),
   note({t:'Yoga and meditation in-house',cls:'w12',r:'-3deg',icon:'sun'}),
@@ -137,7 +137,7 @@ ${day(6,'Friday','Close with clarity',['Yoga and wrap up session','Reflect, inte
  <ul class="wk-idx">
 ${ic('laptop','Work','Wi-Fi, constant electricity and a shared lounge with work tables. Hill internet can dip in bad weather, so keep a backup plan for critical calls.')}
 ${ic('bed','Stay','Eight wood-lined rooms with a double bed, a balcony, a private washroom with geyser, a kettle and a table and chair. A third guest can use an extra mattress.')}
-${ic('bowl','Eat','Home cooking from our own chef. Breakfast is included with every stay and more meals are cooked on request.')}
+${ic('bowl','Eat','Home cooking from our own chef. Meals are included in every workation package.')}
 ${ic('peak','Reset','A garden, riverside and mountain views, and yoga and meditation in-house.')}
  </ul>
 </div></section>

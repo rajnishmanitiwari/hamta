@@ -71,7 +71,7 @@ ${fabHtml}
   </div>
 </footer>
 <script src="/assets/js/config.js" defer></script>
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js${file==='book'?'?v=bk2':''}" defer></script>
 <script src="/assets/js/motion.js" defer></script>
 </body>
 </html>`;
@@ -86,7 +86,7 @@ const lodging=`<script type="application/ld+json">${JSON.stringify({
   "address":{"@type":"PostalAddress","streetAddress":"15th Mile, Hallan-i","addressLocality":"Manali","addressRegion":"Himachal Pradesh","postalCode":"175136","addressCountry":"IN"},
   "priceRange":"INR 2000-3000 per night, INR 15000-30000 per month",
   
-  "amenityFeature":["Free Wi-Fi","Constant electricity","Private bathroom","Free private parking on site","Free laundry","Washing machine","Electric kettle in every room","Balcony","Pet friendly","Child friendly","Road access","Garden","Shared kitchen","Shared lounge with TV area","Games room","Board games and puzzles","Non-smoking throughout","Soundproof rooms","Hiking","Pets allowed","Breakfast included","Home-cooked meals on request","Dedicated cook and cleaner","Garden","Yoga and meditation sessions","Remote work space","Mountain views","Games"].map(n=>({"@type":"LocationFeatureSpecification","name":n,"value":true})),
+  "amenityFeature":["Free Wi-Fi","Constant electricity","Private bathroom","Free private parking on site","Free laundry","Washing machine","Electric kettle in every room","Balcony","Pet friendly","Child friendly","Road access","Garden","Shared kitchen","Shared lounge with TV area","Games room","Board games and puzzles","Non-smoking throughout","Soundproof rooms","Hiking","Pets allowed","Breakfast included on daily stays","Home-cooked meals on request","Dedicated cook and cleaner","Garden","Yoga and meditation sessions","Remote work space","Mountain views","Games"].map(n=>({"@type":"LocationFeatureSpecification","name":n,"value":true})),
   "currenciesAccepted":"INR"})}</script>`;
 const faq=(items)=>`<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":items.map(([q,a])=>({"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}}))})}</script>`;
 
@@ -97,7 +97,7 @@ pages.index={title:'The Hamta Homestay, Manali | Mountain stays by the night or 
 desc:"Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.",
 schema:lodging+faq([
  ['How much is a night at The Hamta Homestay in Manali?','A stay with breakfast included starts at INR 2,000 per room per night, for up to two guests. With the full meal package it is INR 2,500 for one guest and INR 3,000 for two. Peak dates around Christmas and New Year can cost more and are confirmed in writing.'],
- ['Can I stay for a month?','Yes. Monthly stays are INR 15,000 for one guest and INR 20,000 for two with breakfast included, and INR 24,000 or INR 30,000 with the full meal package. A cook and a cleaner are available.'],
+ ['Can I stay for a month?','Yes. Monthly stays are INR 15,000 for one guest and INR 20,000 for two without meals (breakfast is not included), and INR 24,000 or INR 30,000 with the full meal package. A cook and a cleaner are available.'],
  ['Is it good for remote work?','Yes. We have Wi-Fi, constant electricity, a shared lounge with work tables and a quiet mountain setting.'],
  ['Do you host groups?','Yes. We welcome travel groups, corporate teams, students, nonprofits and travel agencies. Tell us your dates and group size.'],['What are the check-in and check-out times?','Check-in is from 12 PM and check-out is at 11 AM the next day. Guests are welcome to arrive at any time, with no extra charge.'],['Is there a weekly discount?','Yes. Stays of 7 nights or more get 15% off the full room and meals bill. All taxes are included.'],['What is the cancellation policy?','Full refund 10 days before arrival, 60% at 7 days, 30% at 3 days, no refund at 24 hours. If we cannot provide your room or food, you get a 100% refund.'],['Are pets and children welcome?','Yes. Pets, children and unmarried couples are welcome with no limit. Smoking is not allowed. Alcohol is accepted.']]),
 body:`
@@ -114,7 +114,7 @@ body:`
 <section class="strip" aria-label="At a glance">
   <div><b>₹2,000</b><span>per room, per night</span></div>
   <div><b>₹15,000</b><span>per month, one guest</span></div>
-  <div><b>Breakfast</b><span>included with every stay</span></div>
+  <div><b>Breakfast</b><span>included with daily stays</span></div>
   <div><b>Wi-Fi + power</b><span>steady, for remote work</span></div>
 </section>
 
@@ -148,7 +148,7 @@ body:`
     <div class="sec-head"><p class="eyebrow">Choose your pace</p><h2>One night or one season</h2></div>
     <div class="cols3">
       <div class="pillar rv"><h3>A night or a week</h3><p>From ₹2,000 per room per night, for up to two guests.</p><p style="margin-top:14px"><a href="/stay" style="text-decoration:underline">Daily rates</a></p></div>
-      <div class="pillar rv d1"><h3>A month or more</h3><p>From ₹15,000 a month with breakfast included. Add the full meal package if you like. A cook and a cleaner are available.</p><p style="margin-top:14px"><a href="/monthly-stay" style="text-decoration:underline">Monthly plans</a></p></div>
+      <div class="pillar rv d1"><h3>A month or more</h3><p>From ₹15,000 a month. Add the full meal package if you like. A cook and a cleaner are available.</p><p style="margin-top:14px"><a href="/monthly-stay" style="text-decoration:underline">Monthly plans</a></p></div>
       <div class="pillar rv d2"><h3>Your whole group</h3><p>Teams, classes, travel agencies and nonprofits. Food, stay and calm for everyone.</p><p style="margin-top:14px"><a href="/groups" style="text-decoration:underline">Group stays</a></p></div>
     </div>
   </div>
@@ -165,7 +165,7 @@ body:`
   <div class="wrap">
     <div class="sec-head center"><p class="eyebrow">Everything in place</p><h2>Simple things done well</h2></div>
     <div class="cols3 light-cols">
-      <div class="pillar rv"><h3>Food from our kitchen</h3><p>Breakfast is included with every stay. Our chef cooks more on request, from meals to sweets, as an affordable add-on.</p></div>
+      <div class="pillar rv"><h3>Food from our kitchen</h3><p>Breakfast is included with daily stays. Our chef cooks more on request, from meals to sweets, as an affordable add-on.</p></div>
       <div class="pillar rv d1"><h3>Work-friendly</h3><p>Wi-Fi, constant electricity and a shared lounge with tables. Quiet enough to think.</p></div>
       <div class="pillar rv d2"><h3>Mind and body</h3><p>Yoga and meditation sessions in-house, a games room, a garden, and dogs on site.</p></div>
     </div>
@@ -186,7 +186,7 @@ pages.stay={title:'Rooms & Rates | The Hamta Homestay, Manali',desc:'Daily and m
 schema:faq([['What are the daily rates?','INR 2,000 per room per night with breakfast included. With the full meal package INR 2,500 for one guest and INR 3,000 for two guests sharing a room.']]),
 body:`${pageHero('Rooms &amp; rates','Stay',  'room-2','Bedroom with a wooden bed, patterned curtains and a window')}
 <section><div class="wrap">
-  <div class="sec-head"><p class="eyebrow">Rates in rupees</p><h2>Simple, honest pricing</h2><p class="lead">Eight rooms, each with a double bed. Every room hosts two guests, and a third fits comfortably on an extra mattress. Breakfast is included with every stay. A cook and a cleaner are available, and the full meal package is optional.</p></div>
+  <div class="sec-head"><p class="eyebrow">Rates in rupees</p><h2>Simple, honest pricing</h2><p class="lead">Eight rooms, each with a double bed. Every room hosts two guests, and a third fits comfortably on an extra mattress. Breakfast is included with daily stays. A cook and a cleaner are available, and the full meal package is optional.</p></div>
   <div class="tabs" role="tablist"><button role="tab" id="t1" aria-selected="true" aria-controls="p-daily">Daily</button><button role="tab" id="t2" aria-selected="false" aria-controls="p-monthly">Monthly</button></div>
   <div class="panel" id="p-daily" role="tabpanel" aria-labelledby="t1">
     <table class="ptable"><tbody>
@@ -200,8 +200,8 @@ body:`${pageHero('Rooms &amp; rates','Stay',  'room-2','Bedroom with a wooden be
   </div>
   <div class="panel" id="p-monthly" role="tabpanel" aria-labelledby="t2" hidden>
     <table class="ptable"><tbody>
-      <tr><th>Stay with breakfast, one guest<small>Cook and cleaner available</small></th><td class="n">₹15,000<small>per month</small></td></tr>
-      <tr><th>Stay with breakfast, two guests<small>Same room</small></th><td class="n">₹20,000<small>per month</small></td></tr>
+      <tr><th>Stay, one guest<small>Cook and cleaner available</small></th><td class="n">₹15,000<small>per month</small></td></tr>
+      <tr><th>Stay, two guests<small>Same room</small></th><td class="n">₹20,000<small>per month</small></td></tr>
       <tr><th>Full meal package, one guest<small>Meals cooked by our chef</small></th><td class="n">₹24,000<small>per month</small></td></tr>
       <tr><th>Full meal package, two guests<small>Same room</small></th><td class="n">₹30,000<small>per month</small></td></tr>
       <tr><th>Heater electricity<small>Only if you use a heater</small></th><td class="n">₹3,000<small>per month</small></td></tr>
@@ -232,7 +232,7 @@ body:`${pageHero('Rooms &amp; rates','Stay',  'room-2','Bedroom with a wooden be
 
 /* MONTHLY */
 pages['monthly-stay']={title:'Monthly Stay in Manali for Remote Work | The Hamta Homestay',desc:'Live in the mountains for a month or more. Monthly stays in Manali from INR 15,000 with Wi-Fi, constant electricity, a cook and a cleaner. Ideal for remote work and slow living.',
-schema:faq([['What does a monthly stay cost?','INR 15,000 for one guest and INR 20,000 for two guests with breakfast included. INR 24,000 or INR 30,000 with the full meal package.'],['Is there a cook?','Yes. A cook is available for meals on request, and a cleaner is available.']]),
+schema:faq([['What does a monthly stay cost?','INR 15,000 for one guest and INR 20,000 for two guests without meals. Breakfast is not included. INR 24,000 or INR 30,000 with the full meal package.'],['Is there a cook?','Yes. A cook is available for meals on request, and a cleaner is available.']]),
 body:`${pageHero('Live here for a month','Monthly stays','lounge','Long wooden lounge with large windows and shared tables')}
 <section><div class="wrap split">
   <div class="rv"><p class="eyebrow">For remote work &amp; slow living</p><h2 style="margin:14px 0 20px">Your office has a Himalaya outside.</h2><p class="lead">Constant electricity, Wi-Fi, a shared lounge with work tables and nobody rushing you. When you close the laptop there are mountains, yoga and home food.</p>
@@ -242,7 +242,7 @@ body:`${pageHero('Live here for a month','Monthly stays','lounge','Long wooden l
 <section class="band"><div class="wrap">
   <div class="sec-head"><p class="eyebrow">Monthly plans</p><h2>Pick how you live</h2></div>
   <div class="cols3">
-    <div class="pillar"><h3>Stay with breakfast</h3><p style="font-family:var(--serif);font-size:40px;opacity:1">₹15,000</p><p>one guest / month</p><p style="margin-top:12px">₹20,000 for two sharing</p></div>
+    <div class="pillar"><h3>Stay</h3><p style="font-family:var(--serif);font-size:40px;opacity:1">₹15,000</p><p>one guest / month</p><p style="margin-top:12px">₹20,000 for two sharing</p></div>
     <div class="pillar"><h3>Full meal package</h3><p style="font-family:var(--serif);font-size:40px;opacity:1">₹24,000</p><p>one guest / month</p><p style="margin-top:12px">₹30,000 for two sharing</p></div>
     <div class="pillar"><h3>Heater</h3><p style="font-family:var(--serif);font-size:40px;opacity:1">₹3,000</p><p>per month, only if you use a heater</p></div>
   </div>
@@ -262,7 +262,7 @@ body:`${pageHero('Bring your people','Groups','night','Hamta Homestay lit up at 
     <div class="pillar rv d2"><h3>Organisations</h3><p>Nonprofits, wellness groups, travel agencies and tour operators.</p></div>
   </div>
   <div class="split" style="margin-top:80px"><div class="frame wide reveal-img">${img('lounge','Long wooden lounge with large windows and shared tables')}</div>
-  <div class="rv"><h2>Meals, together</h2><p class="lead" style="margin-top:16px">Breakfast is included with every stay. Our chef cooks more on request. Share dietary needs and group size in advance.</p><ul class="ticks"><li>Shared lounge for sessions and meals</li><li>Yoga and meditation on request</li><li>Games and a garden for downtime</li></ul><div style="margin-top:28px"><a class="btn btn-dark" href="/book?type=group">Request a group quote</a></div></div></div>
+  <div class="rv"><h2>Meals, together</h2><p class="lead" style="margin-top:16px">Breakfast is included with daily stays. Our chef cooks more on request. Share dietary needs and group size in advance.</p><ul class="ticks"><li>Shared lounge for sessions and meals</li><li>Yoga and meditation on request</li><li>Games and a garden for downtime</li></ul><div style="margin-top:28px"><a class="btn btn-dark" href="/book?type=group">Request a group quote</a></div></div></div>
 </div></section>`};
 
 /* EXPERIENCES */
@@ -287,9 +287,9 @@ body:`${pageHero('Around Hamta','Experiences','lounge','Long wooden lounge with 
 <section><div class="wrap split"><div class="frame wide reveal-img">${img('view-1','Snow-capped mountains above an autumn valley and a sunlit slope, nearby')}</div><div class="rv"><h2>Come for the view. Stay for the food.</h2><p class="lead" style="margin:16px 0 28px">Our chef cooks on request, from meals to sweets.</p><a class="btn btn-dark" href="/menu">See the menu</a></div></div></section>`};
 
 /* MENU */
-pages.menu={title:'Food | The Hamta Homestay, Manali',desc:'Home cooking at The Hamta Homestay in Manali. Breakfast is included with every stay. Our in-house chef cooks more meals and sweets on request.',
+pages.menu={title:'Food | The Hamta Homestay, Manali',desc:'Home cooking at The Hamta Homestay in Manali. Breakfast is included with daily stays. Our in-house chef cooks more meals and sweets on request.',
 body:`${pageHero('Food','Eat well','view-2','Snow-covered mountain range above an autumn valley with a pond, nearby')}
-<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Home cooking from our own chef. Breakfast is included with every stay. More meals and sweets on request.</p></div></section>
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Home cooking from our own chef. Breakfast is included with daily stays. More meals and sweets on request.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
   <figure class="re-a rv">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
   <figure class="re-b rv d1">${img('cupboard','Wooden cupboard in a Hamta room',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
@@ -309,7 +309,7 @@ body:`${pageHero('Guest handbook','Before and during your stay','view-3','A rive
   <div class="toc"><a href="#arrive">Arrival</a><a href="#room">Your stay</a><a href="#food">Food</a><a href="#work">Work &amp; Wi-Fi</a><a href="#mountain">Mountain tips</a><a href="#help">Help</a></div>
   <h2 id="arrive">Arrival</h2><p>We are at 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136. Share your arrival time and we guide you in. Check-in is from 12 PM and check-out is at 11 AM the next day. You are welcome to arrive at any time of day, with no extra charge. Mountain roads and weather can slow you down, so plan some buffer.</p>
   <h2 id="room">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹1,000 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
-  <h2 id="food">Food</h2><p>Our cook prepares meals on request. See <a href="/menu" style="text-decoration:underline">food</a>. Tell us what you like and any dietary needs. Breakfast is included with every stay. Other meals are extra unless you take the full meal package.</p>
+  <h2 id="food">Food</h2><p>Our cook prepares meals on request. See <a href="/menu" style="text-decoration:underline">food</a>. Tell us what you like and any dietary needs. Breakfast is included with daily stays. Other meals are extra unless you take the full meal package.</p>
   <h2 id="work">Work &amp; Wi-Fi</h2><p>Wi-Fi and constant electricity are available. The shared lounge has work tables. Hill internet can dip in bad weather, so keep a backup plan for critical calls.</p>
   <h2 id="mountain">Mountain tips</h2><ul><li>Layers beat one big jacket. Evenings are cold even after a warm day.</li><li>Altitude: drink water, go slow on the first day.</li><li>Check weather and road status before trekking. Use licensed local guides for long routes.</li></ul>
   <h2 id="help">Help</h2><p>Message or call your host Kabir on WhatsApp at +91 62398 15892. See also <a href="/house-rules" style="text-decoration:underline">house rules</a>.</p>
@@ -345,7 +345,7 @@ body:`<section class="book-hero"><div class="wrap"><p class="kicker">Booking req
       <div class="row"><label>Type of stay<select name="stay_type"><option value="daily">A few nights</option><option value="monthly">A month or more</option><option value="group">A group</option></select></label><label>Rooms<input type="number" name="rooms" min="1" max="8" value="1" required></label></div>
       <div class="row"><label>Check-in<input type="date" name="check_in" required></label><label class="only-daily">Check-out<input type="date" name="check_out"></label><label class="only-monthly" hidden>Months<input type="number" name="months" min="1" max="12" value="1"></label></div>
       <div class="row"><label>Guests in total<input type="number" name="total_guests" min="1" max="30" value="1" required></label><label>Of them, children under 12<input type="number" name="children" min="0" max="20" value="0"></label></div>
-      <div class="row"><label>Meals<select name="meals"><option value="no">Stay with breakfast (included)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
+      <div class="row"><label>Meals<select name="meals"><option value="no">Stay only (breakfast included on daily stays)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
       <label class="chk"><input type="checkbox" name="heater"> I will use a room heater (₹1,000 a day, ₹3,000 a month)</label>
       <div class="est" aria-live="polite"><small>Indicative total, not an amount to pay</small><b id="est-out">Pick your dates</b><small id="est-note"></small></div>
     </fieldset>
@@ -400,7 +400,7 @@ const prose=(t,d,b)=>({title:`${t} | The Hamta Homestay, Manali`,desc:d,light:tr
 pages.terms=prose('Terms &amp; conditions','Booking terms for The Hamta Homestay in Manali.',`
 <h2>Booking requests</h2><p>A request on this website is not a booking. A booking exists when Hamta confirms availability and price to you and you pay in advance.</p>
 <h2>Rates and payment</h2><p>Rates are in Indian rupees, per room, for up to two guests, and are the same for all guests. All taxes are included. Payment is made in advance, after we confirm availability and the final quote. Peak-date rates apply on national holidays, busy weekends, the last week of December, the first week of January and the first two weeks of February, and are confirmed before you pay.</p>
-<h2>Breakfast</h2><p>Breakfast is included with every stay, with or without the full meal package.</p>
+<h2>Breakfast</h2><p>Breakfast is included with daily stays, with or without the full meal package. Monthly stays without the full meal package do not include breakfast.</p>
 <h2>Check-in and check-out</h2><p>Check-in is from 12 PM. Check-out is at 11 AM the next day. You are welcome to arrive at any time of day, with no extra charge.</p>
 <h2>Monthly stays</h2><p>A month is the calendar month, first to last date, or 30 days. Three rooms are kept for monthly stays.</p>
 <h2>Guests</h2><p>Each room has a double bed for two guests. A third guest can be added on an extra mattress. Pets, children and unmarried couples are welcome with no limit. Smoking is not allowed. Alcohol is accepted.</p>

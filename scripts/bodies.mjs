@@ -53,7 +53,7 @@ const index=`
 </section>`;
 
 const stay=`${pageHero('Stay','Rooms and rates','room-2','Bedroom with a wooden bed, patterned curtains and a window')}
-<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Eight rooms, each with a double bed. Two guests per room, a third on an extra mattress. Breakfast is included with every stay.</p></div></section>
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Eight rooms, each with a double bed. Two guests per room, a third on an extra mattress. Breakfast is included with daily stays.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
   <figure class="re-a rv">${img('room-3','Double bed with an arched wooden headboard and warm bedside lamps',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
   <figure class="re-b rv d1">${img('room-2','Bedroom with a wooden bed, patterned curtains and a window',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
@@ -74,8 +74,8 @@ const stay=`${pageHero('Stay','Rooms and rates','room-2','Bedroom with a wooden 
   </div>
   <div class="panel" id="p-monthly" role="tabpanel" aria-labelledby="t2" hidden>
     <table class="ptable"><tbody>
-      <tr><th>Stay with breakfast, one guest<small>Cook and cleaner available</small></th><td class="n">₹15,000<small>per month</small></td></tr>
-      <tr><th>Stay with breakfast, two guests<small>Same room</small></th><td class="n">₹20,000<small>per month</small></td></tr>
+      <tr><th>Stay, one guest<small>Cook and cleaner available</small></th><td class="n">₹15,000<small>per month</small></td></tr>
+      <tr><th>Stay, two guests<small>Same room</small></th><td class="n">₹20,000<small>per month</small></td></tr>
       <tr><th>Full meal package, one guest<small>Meals cooked by our chef</small></th><td class="n">₹24,000<small>per month</small></td></tr>
       <tr><th>Full meal package, two guests<small>Same room</small></th><td class="n">₹30,000<small>per month</small></td></tr>
       <tr><th>Heater<small>Only if you use one</small></th><td class="n">₹3,000<small>per month</small></td></tr>
@@ -92,7 +92,7 @@ const stay=`${pageHero('Stay','Rooms and rates','room-2','Bedroom with a wooden 
 </div></section>`;
 
 const monthly=`${pageHero('Live here for a month','Monthly stays','lounge','Long wooden lounge with large windows at The Hamta Homestay')}
-<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Your office has a Himalaya outside. Constant electricity, Wi-Fi, a shared lounge with work tables, and nobody rushing you.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="/workation" style="text-decoration:underline;text-underline-offset:4px">Want structure around the stay? See our 6 day workation in Manali.</a></p></div></section>
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Your office has a Himalaya outside. Constant electricity, Wi-Fi, a shared lounge with work tables, and nobody rushing you.</p><p style="text-align:center;margin-top:26px;font-size:16px"><a href="/workation" style="text-decoration:underline;text-underline-offset:4px">Want structure around the stay? See our 7 day workation in Manali.</a></p></div></section>
 <section class="rooms-ed"><div class="wrap">
   <figure class="re-a rv">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
   <figure class="re-b rv d1">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
@@ -100,7 +100,7 @@ const monthly=`${pageHero('Live here for a month','Monthly stays','lounge','Long
 <section class="rates"><div class="wrap">
   <p class="kicker">Monthly plans, taxes included</p>
   <table class="ptable"><tbody>
-    <tr><th>Stay with breakfast<small>one guest. ₹20,000 for two sharing</small></th><td class="n">₹15,000<small>per month</small></td></tr>
+    <tr><th>Stay<small>one guest. ₹20,000 for two sharing</small></th><td class="n">₹15,000<small>per month</small></td></tr>
     <tr><th>Full meal package<small>one guest. ₹30,000 for two sharing</small></th><td class="n">₹24,000<small>per month</small></td></tr>
     <tr><th>Heater<small>Only if you use one</small></th><td class="n">₹3,000<small>per month</small></td></tr>
   </tbody></table>
@@ -114,7 +114,7 @@ const groups=`${pageHero('Bring your people','Groups','night','Hamta Homestay li
   <figure class="re-a rv">${img('night','Hamta Homestay lit up at night among flowers',{sizes:'(max-width:860px) 70vw, 34vw'})}</figure>
   <figure class="re-c rv d1">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 44vw'})}</figure>
 </div></section>
-<section class="rates"><div class="wrap narrow"><p class="lead">Tell us your dates and group size and we reply with a plan. Breakfast is included with every stay. Our chef cooks more on request, so share dietary needs in advance.</p><div style="margin-top:32px"><a class="btn btn-dark" href="/book?type=group">Plan a group stay</a></div></div></section>`;
+<section class="rates"><div class="wrap narrow"><p class="lead">Tell us your dates and group size and we reply with a plan. Breakfast is included with daily stays. Our chef cooks more on request, so share dietary needs in advance.</p><div style="margin-top:32px"><a class="btn btn-dark" href="/book?type=group">Plan a group stay</a></div></div></section>`;
 
 const exp=`${pageHero('Around Hamta','Forest, river, peaks','view-1','Snow-capped mountains above an autumn valley and a sunlit slope, nearby')}
 <section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Forest trails, a river nearby and trekking. Ask us what suits the season.</p></div></section>
