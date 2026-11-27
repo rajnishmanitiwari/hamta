@@ -3,7 +3,7 @@ export default function(img,{pageHero}){
 const strip=(href,n,alt,t,s)=>`<a class="strip-i" href="${href}">${img(n,alt,{sizes:'(max-width:860px) 100vw, 40vw'})}<span class="cap"><i>${s}</i><b>${t}</b></span></a>`;
 const index=`
 <section class="hero2" data-hero>
-  <div class="hero2-img">${img('hero-drone','Pine forest, roofs and Himalayan peaks seen from above Hamta Homestay in Manali',{eager:true,sizes:'100vw'})}</div>
+  <div class="hero2-img">${img('view-2','Snow-covered mountain range above an autumn valley with a pond, nearby',{eager:true,sizes:'100vw'})}</div>
   <p class="h-cap h-cap-l">Manali, Himachal Pradesh</p>
   <h1 class="h-title" aria-label="Hamta">HAMTA</h1>
   <p class="h-cap h-cap-r">Stay where the mountains stay.</p>
@@ -21,43 +21,43 @@ const index=`
 
 <section class="pin" data-pin>
   <div class="pin-in">
-    <div class="pin-img">${img('view-terrace','Clouds moving over green mountains and distant snow peaks from the Hamta Homestay terrace',{sizes:'100vw'})}</div>
+    <div class="pin-img">${img('window-view','View from a Hamta homestay window over pine trees, rooftops and the valley',{sizes:'100vw'})}</div>
     <h2 class="pin-t"><span>THE</span> <span>VIEW</span></h2>
-    <p class="pin-c">Cloud, pine and distant snow.</p>
+    <p class="pin-c">The view from a homestay window.</p>
   </div>
 </section>
 
 <section class="strips-sec">
   <div class="wrap"><p class="kicker">02 / Ways to stay</p></div>
   <div class="strips" data-strips>
-    ${strip('/stay','room-a1','Wood-lined double room with arched headboard and warm lamps','Rooms','Eight rooms')}
-    ${strip('/monthly-stay','lounge-2','Sunlit lounge with long wooden tables and mountain windows','Monthly','Live here a while')}
-    ${strip('/groups','ext-day','The Hamta Homestay building against the hillside','Groups','15 to 20 guests')}
-    ${strip('/experiences','forest-trail','Forest trail through tall pines','Around','Forest, river, peaks')}
+    ${strip('/stay','room-3','Double bed with an arched wooden headboard and warm bedside lamps','Rooms','Eight rooms')}
+    ${strip('/monthly-stay','lounge','Long wooden lounge with large windows and shared tables','Monthly','Live here a while')}
+    ${strip('/groups','night','The Hamta Homestay lit up at night among flowers','Groups','15 to 20 guests')}
+    ${strip('/experiences','room-8','Sunlit room with a wooden double bed and a patterned bed runner','Around','Forest, river, peaks')}
   </div>
 </section>
 
 <section class="duo">
   <div class="wrap duo-g">
-    <figure class="duo-a rv">${img('view-sunset-tall','Evening light over layered ridges',{sizes:'(max-width:860px) 80vw, 34vw'})}</figure>
-    <div class="duo-t rv"><p class="kicker">03 / Evenings</p><h2>THE VALLEY<br>TURNS GOLD</h2><p class="serif-i">Bring a book, a laptop or nothing at all.</p></div>
-    <figure class="duo-b rv d1">${img('ext-far','Hamta Homestay teal roof among pine forest',{sizes:'(max-width:860px) 70vw, 26vw'})}</figure>
+    <figure class="duo-a rv">${img('night','The Hamta Homestay lit up at night among flowers',{sizes:'(max-width:860px) 80vw, 34vw'})}</figure>
+    <div class="duo-t rv"><p class="kicker">03 / Evenings</p><h2>THE HOUSE<br>AT NIGHT</h2><p class="serif-i">Bring a book, a laptop or nothing at all.</p></div>
+    <figure class="duo-b rv d1">${img('night','Hamta Homestay lit up at night among flowers',{sizes:'(max-width:860px) 70vw, 26vw'})}</figure>
   </div>
 </section>
 
 <section class="rates-line"><div class="wrap"><p>From <b>₹2,000</b> a night, breakfast included. <b>₹15,000</b> a month. <a href="/stay">See rates</a></p></div></section>
 
 <section class="closer">
-  <div class="closer-img">${img('view-clouds','Cloud over Himalayan peaks',{sizes:'100vw'})}</div>
+  <div class="closer-img">${img('view-1','Snow-capped mountains above an autumn valley and a sunlit slope, nearby',{sizes:'100vw'})}</div>
   <div class="wrap"><h2>COME AND<br>STAY A WHILE</h2><a class="btn btn-gold" href="/book">Request your stay</a></div>
 </section>`;
 
-const stay=`${pageHero('Stay','Rooms and rates','view-balcony','Wooden table on the balcony with pine forest and mountains beyond')}
+const stay=`${pageHero('Stay','Rooms and rates','room-2','Bedroom with a wooden bed, patterned curtains and a window')}
 <section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Eight rooms, each with a double bed. Two guests per room, a third on an extra mattress. Breakfast is included with every stay.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
-  <figure class="re-a rv">${img('room-a1','Double room with wooden arched headboard and warm lamps',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
-  <figure class="re-b rv d1">${img('room-b3','Bedroom with striped throw, wooden bed and tall window',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
-  <figure class="re-c rv">${img('room-c3','Room with bed, seating and curtains',{sizes:'(max-width:860px) 92vw, 40vw'})}</figure>
+  <figure class="re-a rv">${img('room-3','Double bed with an arched wooden headboard and warm bedside lamps',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
+  <figure class="re-b rv d1">${img('room-2','Bedroom with a wooden bed, patterned curtains and a window',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
+  <figure class="re-c rv">${img('room-4','Room with a double bed, chairs, a table and patterned curtains',{sizes:'(max-width:860px) 92vw, 40vw'})}</figure>
 </div></section>
 <section class="rates"><div class="wrap">
   <p class="kicker">Rates in rupees, taxes included</p>
@@ -91,11 +91,11 @@ const stay=`${pageHero('Stay','Rooms and rates','view-balcony','Wooden table on 
   <p class="note">Pets, children and alcohol are welcome. The property is non-smoking.</p>
 </div></section>`;
 
-const monthly=`${pageHero('Live here for a month','Monthly stays','view-valley','Green valley, pine trees and cloud over Himalayan peaks')}
+const monthly=`${pageHero('Live here for a month','Monthly stays','lounge','Long wooden lounge with large windows at The Hamta Homestay')}
 <section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Your office has a Himalaya outside. Constant electricity, Wi-Fi, a shared lounge with work tables, and nobody rushing you.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
-  <figure class="re-a rv">${img('lounge-2','Sunlit lounge with long wooden tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
-  <figure class="re-b rv d1">${img('lounge-1','Lounge with wooden tables and mountain windows',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
+  <figure class="re-a rv">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
+  <figure class="re-b rv d1">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
 </div></section>
 <section class="rates"><div class="wrap">
   <p class="kicker">Monthly plans, taxes included</p>
@@ -108,21 +108,20 @@ const monthly=`${pageHero('Live here for a month','Monthly stays','view-valley',
   <div style="margin-top:36px"><a class="btn btn-dark" href="/book?type=monthly">Request a monthly stay</a></div>
 </div></section>`;
 
-const groups=`${pageHero('Bring your people','Groups','ext-far','Hamta Homestay teal roof among pine forest')}
+const groups=`${pageHero('Bring your people','Groups','night','Hamta Homestay lit up at night among flowers')}
 <section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Groups of 15 to 20 across eight rooms. Teams, students, nonprofits and travel agencies. One house, one table, a lot of quiet.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
-  <figure class="re-a rv">${img('ext-day','The Hamta Homestay building against the hillside',{sizes:'(max-width:860px) 70vw, 34vw'})}</figure>
-  <figure class="re-c rv d1">${img('lounge-3','Long shared lounge with wooden tables and large windows',{sizes:'(max-width:860px) 92vw, 44vw'})}</figure>
+  <figure class="re-a rv">${img('night','Hamta Homestay lit up at night among flowers',{sizes:'(max-width:860px) 70vw, 34vw'})}</figure>
+  <figure class="re-c rv d1">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 44vw'})}</figure>
 </div></section>
 <section class="rates"><div class="wrap narrow"><p class="lead">Tell us your dates and group size and we reply with a plan. Breakfast is included with every stay. Our chef cooks more on request, so share dietary needs in advance.</p><div style="margin-top:32px"><a class="btn btn-dark" href="/book?type=group">Plan a group stay</a></div></div></section>`;
 
-const exp=`${pageHero('Around Hamta','Forest, river, peaks','view-clouds','Cloud around Himalayan peaks')}
-<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Forest trails, a river nearby, trekking and mountain views that change by the hour.</p></div></section>
+const exp=`${pageHero('Around Hamta','Forest, river, peaks','view-1','Snow-capped mountains above an autumn valley and a sunlit slope, nearby')}
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Forest trails, a river nearby and trekking. Ask us what suits the season.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
-  <figure class="re-a rv">${img('view-sunset','Orange sunset over forested ridges',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
-  <figure class="re-b rv d1">${img('forest-trail','Forest trail through tall pines',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
-  <figure class="re-c rv">${img('rooftop','Rooftops and pines with mountains beyond',{sizes:'(max-width:860px) 92vw, 40vw'})}</figure>
+  <figure class="re-a rv">${img('act-1','A paraglider above snow-dusted mountains and pine forest, an activity guests go to',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
+  <figure class="re-b rv d1">${img('act-2','A rider on a motorcycle outside a glass-fronted building with prayer flags and snow peaks behind, a place guests go to',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
 </div></section>
-<section class="rates"><div class="wrap narrow"><p class="lead">Ask us what suits your fitness and the season. Yoga and meditation are in-house.</p><p class="note">Drive times, for example about 50 minutes by road to Hadimba Devi Temple per Google, vary with traffic and season.</p></div></section>`;
+<section class="rates"><div class="wrap narrow"><p class="lead">Ask us what suits your fitness and the season. Yoga and meditation are in-house.</p><p class="note">Photos show places and activities guests go to.</p><p class="note">Drive times, for example about 50 minutes by road to Hadimba Devi Temple per Google, vary with traffic and season.</p></div></section>`;
 return {index,stay,monthly,groups,exp};
 }

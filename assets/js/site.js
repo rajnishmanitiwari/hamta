@@ -9,7 +9,7 @@
       if(!hdr.classList.contains('light')) hdr.classList.toggle('solid',y>60);
       hdr.classList.toggle('hide',y>last && y>400 && !d.body.classList.contains('menu-open'));
     }
-    if(fab){var ft=d.querySelector('.ftr');var inFt=ft&&ft.getBoundingClientRect().top<window.innerHeight-90;fab.classList.toggle('off',y<500||inFt)}
+    if(fab){var ft=d.querySelector('.ftr');var inFt=ft&&ft.getBoundingClientRect().top<window.innerHeight-90;var sp=d.querySelector('.strips');var inSp=false;if(sp){var sr=sp.getBoundingClientRect();inSp=sr.top<window.innerHeight&&sr.bottom>0}fab.classList.toggle('off',y<500||inFt||inSp)}
     last=y;
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();

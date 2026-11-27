@@ -16,7 +16,7 @@ const img=(n,alt,{cls='',eager=false,sizes='(max-width:860px) 92vw, 50vw'}={})=>
 const NAV=[['stay','Stay'],['monthly-stay','Monthly'],['groups','Groups'],['experiences','Around'],['menu','Menu'],['gallery','Gallery'],['handbook','Handbook']];
 const logoSvg=`<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle class="sun" cx="37" cy="11" r="3.8" fill="#d4b676"/><path d="M3 36 18 9l9 15 5-8 13 20z" fill="currentColor"/><path class="cap" d="M18 9l-4.6 8 3.2-1.6 2 3 2.5-3 2.6 2z" fill="#cfe3f0"/><path class="rv2" d="M3 42q7-3.5 14 0t14 0 14 0" stroke="#7fb0cf" stroke-width="2.2" stroke-linecap="round"/></svg>`;
 
-function layout({file,title,desc,body,light=false,schema='',ogimg='ext-day',noindex=false}){
+function layout({file,title,desc,body,light=false,schema='',ogimg='og',noindex=false}){
   const fabHtml=(file==='book'||file==='contact'||file==='404')?'':`<div class="fab off"><a class="btn btn-gold" href="/book">Request a stay</a><a class="btn btn-dark" data-wa="Hello, I would like to stay at The Hamta Homestay." href="#" hidden target="_blank" rel="noopener">WhatsApp</a></div>`;
   const url=`${SITE}/${file==='index'?'':file}`;
   return `<!doctype html>
@@ -82,7 +82,7 @@ const pageHero=(h,sub,image,alt)=>`<section class="page-hero" data-hero>${img(im
 const lodging=`<script type="application/ld+json">${JSON.stringify({
   "@context":"https://schema.org","@type":"LodgingBusiness","name":"The Hamta Homestay",
   "description":"Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.",
-  "url":SITE,"telephone":"+916239815892","email":"hello@hamta.in","geo":{"@type":"GeoCoordinates","latitude":32.1440721,"longitude":77.1609703},"hasMap":MAPS,"checkinTime":"12:00","checkoutTime":"11:00","petsAllowed":true,"numberOfRooms":8,"image":[`${SITE}/assets/img/ext-day.jpg`,`${SITE}/assets/img/hero-poster.jpg`],
+  "url":SITE,"telephone":"+916239815892","email":"hello@hamta.in","geo":{"@type":"GeoCoordinates","latitude":32.1440721,"longitude":77.1609703},"hasMap":MAPS,"checkinTime":"12:00","checkoutTime":"11:00","petsAllowed":true,"numberOfRooms":8,"image":[`${SITE}/assets/img/og.jpg`,`${SITE}/assets/img/night.webp`],
   "address":{"@type":"PostalAddress","streetAddress":"15th Mile, Hallan-i","addressLocality":"Manali","addressRegion":"Himachal Pradesh","postalCode":"175136","addressCountry":"IN"},
   "priceRange":"INR 2000-3000 per night, INR 15000-30000 per month",
   
@@ -102,8 +102,6 @@ schema:lodging+faq([
  ['Do you host groups?','Yes. We welcome travel groups, corporate teams, students, nonprofits and travel agencies. Tell us your dates and group size.'],['What are the check-in and check-out times?','Check-in is from 12 PM and check-out is at 11 AM the next day. Guests are welcome to arrive at any time, with no extra charge.'],['Is there a weekly discount?','Yes. Stays of 7 nights or more get 15% off the full room and meals bill. All taxes are included.'],['What is the cancellation policy?','Full refund 10 days before arrival, 60% at 7 days, 30% at 3 days, no refund at 24 hours. If we cannot provide your room or food, you get a 100% refund.'],['Are pets and children welcome?','Yes. Pets, children and unmarried couples are welcome with no limit. Smoking is not allowed. Alcohol is accepted.']]),
 body:`
 <section class="hero">
-  <img class="poster" src="/assets/img/hero-poster.webp" alt="Aerial view of The Hamta Homestay with its teal roof among pine forest in Manali" fetchpriority="high">
-  <video muted loop playsinline preload="none" poster="/assets/img/hero-poster.webp" aria-hidden="true" data-src="/assets/video/hero.mp4"></video>
   <div class="wrap in">
     <p class="eyebrow" style="color:var(--gold-2);margin-bottom:18px">Manali · Himachal Pradesh</p>
     <h1><span class="ln"><span>Stay where the</span></span><span class="ln"><span>mountains stay.</span></span></h1>
@@ -122,7 +120,7 @@ body:`
 
 <section>
   <div class="wrap split">
-    <div class="frame reveal-img">${img('ext-day','The Hamta Homestay building in blue and white against the hillside')}</div>
+    <div class="frame reveal-img">${img('night','Hamta Homestay lit up at night among flowers')}</div>
     <div class="rv">
       <p class="eyebrow">Welcome</p>
       <h2 style="margin:14px 0 20px">Slow mornings. Big views. Hot food.</h2>
@@ -138,10 +136,10 @@ body:`
 <section>
   <div class="wrap sec-head"><p class="eyebrow">Rooms</p><h2>Rooms made of pine and light</h2></div>
   <div class="hscroll" tabindex="0" aria-label="Room photos">
-    <a class="card" href="/stay"><div class="ph">${img('room-a1','Double room with wooden headboard and warm lights',{sizes:'420px'})}</div><div class="tx"><h3>Rooms</h3><p>Wood-lined rooms for up to two guests.</p><span class="price-tag">₹2,000 <small>per room, per night</small></span></div></a>
-    <a class="card" href="/stay"><div class="ph">${img('room-b1','Wooden double bed with warm blanket and rug',{sizes:'420px'})}</div><div class="tx"><h3>Rest well</h3><p>Warm blankets and bright windows for slow mornings.</p><span class="price-tag">₹2,000 <small>per room, per night</small></span></div></a>
-    <a class="card" href="/stay"><div class="ph">${img('room-c1','Spacious room with wooden ceiling and floor',{sizes:'420px'})}</div><div class="tx"><h3>Space to stay</h3><p>High wooden ceilings and room for longer stays.</p><span class="price-tag">₹2,000 <small>per room, per night</small></span></div></a>
-    <a class="card" href="/monthly-stay"><div class="ph">${img('lounge-2','Sunlit common lounge with wooden tables and cushioned seating',{sizes:'420px'})}</div><div class="tx"><h3>The lounge</h3><p>A shared, sunlit room with tables to work at.</p><span class="price-tag" style="font-size:22px">Shared by guests</span></div></a>
+    <a class="card" href="/stay"><div class="ph">${img('room-3','Double bed with an arched wooden headboard and warm bedside lamps',{sizes:'420px'})}</div><div class="tx"><h3>Rooms</h3><p>Wood-lined rooms for up to two guests.</p><span class="price-tag">₹2,000 <small>per room, per night</small></span></div></a>
+    <a class="card" href="/stay"><div class="ph">${img('room-5','Wooden double bed with bedside lamp and patterned curtains',{sizes:'420px'})}</div><div class="tx"><h3>Rest well</h3><p>Warm blankets and bright windows for slow mornings.</p><span class="price-tag">₹2,000 <small>per room, per night</small></span></div></a>
+    <a class="card" href="/stay"><div class="ph">${img('room-8','Sunlit room with a wooden double bed and a patterned bed runner',{sizes:'420px'})}</div><div class="tx"><h3>Space to stay</h3><p>High wooden ceilings and room for longer stays.</p><span class="price-tag">₹2,000 <small>per room, per night</small></span></div></a>
+    <a class="card" href="/monthly-stay"><div class="ph">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'420px'})}</div><div class="tx"><h3>The lounge</h3><p>A shared, sunlit room with tables to work at.</p><span class="price-tag" style="font-size:22px">Shared by guests</span></div></a>
   </div>
 </section>
 
@@ -159,7 +157,7 @@ body:`
 <section>
   <div class="wrap split rev">
     <div class="rv"><p class="eyebrow">The view</p><h2 style="margin:14px 0 20px">Wake up to the Himalaya.</h2><p class="lead">Pine ridges, drifting cloud and evening light that turns the whole valley gold. Bring a book, a laptop or nothing at all.</p><div style="margin-top:28px"><a class="btn btn-line" href="/gallery">Open the gallery</a></div></div>
-    <div class="frame wide reveal-img">${img('view-sunset','Orange sunset sky over forested Himalayan ridges seen from Hamta Homestay')}</div>
+    <div class="frame wide reveal-img">${img('view-3','A river running below snow-dusted mountains, nearby')}</div>
   </div>
 </section>
 
@@ -186,7 +184,7 @@ body:`
 /* STAY */
 pages.stay={title:'Rooms & Rates | The Hamta Homestay, Manali',desc:'Daily and monthly rates at The Hamta Homestay in Manali. Rooms from INR 2,000 per night for two guests. Breakfast included. Stay 7 nights or more and get 15% off. All taxes included.',
 schema:faq([['What are the daily rates?','INR 2,000 per room per night with breakfast included. With the full meal package INR 2,500 for one guest and INR 3,000 for two guests sharing a room.']]),
-body:`${pageHero('Rooms &amp; rates','Stay',  'view-balcony','Balcony at Hamta Homestay overlooking pine forest and mountains')}
+body:`${pageHero('Rooms &amp; rates','Stay',  'room-2','Bedroom with a wooden bed, patterned curtains and a window')}
 <section><div class="wrap">
   <div class="sec-head"><p class="eyebrow">Rates in rupees</p><h2>Simple, honest pricing</h2><p class="lead">Eight rooms, each with a double bed. Every room hosts two guests, and a third fits comfortably on an extra mattress. Breakfast is included with every stay. A cook and a cleaner are available, and the full meal package is optional.</p></div>
   <div class="tabs" role="tablist"><button role="tab" id="t1" aria-selected="true" aria-controls="p-daily">Daily</button><button role="tab" id="t2" aria-selected="false" aria-controls="p-monthly">Monthly</button></div>
@@ -227,7 +225,7 @@ body:`${pageHero('Rooms &amp; rates','Stay',  'view-balcony','Balcony at Hamta H
   </div>
   <p class="note">Ask us if you need something specific.</p></div></section>
 <section><div class="wrap split">
-  <div class="frame wide reveal-img">${img('bath-2','Clean tiled bathroom with water heater')}</div>
+  <div class="frame wide reveal-img">${img('room-6','Double bed with a wooden headboard and bedside lamps')}</div>
   <div class="rv"><p class="eyebrow">Also here</p><h2 style="margin:14px 0 20px">What is available</h2>
   <ul class="ticks"><li>Constant electricity and Wi-Fi</li><li>Free laundry</li><li>Cleaner available</li><li>Cook available for meals on request</li><li>Garden, lounge, games, dogs on site</li><li>Yoga and meditation sessions, not included in the room price</li></ul></div>
 </div></section>`};
@@ -235,11 +233,11 @@ body:`${pageHero('Rooms &amp; rates','Stay',  'view-balcony','Balcony at Hamta H
 /* MONTHLY */
 pages['monthly-stay']={title:'Monthly Stay in Manali for Remote Work | The Hamta Homestay',desc:'Live in the mountains for a month or more. Monthly stays in Manali from INR 15,000 with Wi-Fi, constant electricity, a cook and a cleaner. Ideal for remote work and slow living.',
 schema:faq([['What does a monthly stay cost?','INR 15,000 for one guest and INR 20,000 for two guests with breakfast included. INR 24,000 or INR 30,000 with the full meal package.'],['Is there a cook?','Yes. A cook is available for meals on request, and a cleaner is available.']]),
-body:`${pageHero('Live here for a month','Monthly stays','lounge-1','Sunlit lounge with wooden tables at Hamta Homestay')}
+body:`${pageHero('Live here for a month','Monthly stays','lounge','Long wooden lounge with large windows and shared tables')}
 <section><div class="wrap split">
   <div class="rv"><p class="eyebrow">For remote work &amp; slow living</p><h2 style="margin:14px 0 20px">Your office has a Himalaya outside.</h2><p class="lead">Constant electricity, Wi-Fi, a shared lounge with work tables and nobody rushing you. When you close the laptop there are mountains, yoga and home food.</p>
   <ul class="ticks"><li>Cook available for meals on request</li><li>Cleaner available</li><li>Free laundry and a washing machine</li><li>Three rooms are kept for monthly stays</li><li>Yoga and meditation sessions in-house, not included in the price</li><li>Same price for guests from India and abroad</li><li>Language help if you do not speak Hindi or English</li></ul></div>
-  <div class="frame reveal-img">${img('workspace','Laptop on a wooden table in the lounge')}</div>
+  <div class="frame reveal-img">${img('lounge','Shared lounge with wooden tables and large windows')}</div>
 </div></section>
 <section class="band"><div class="wrap">
   <div class="sec-head"><p class="eyebrow">Monthly plans</p><h2>Pick how you live</h2></div>
@@ -255,7 +253,7 @@ body:`${pageHero('Live here for a month','Monthly stays','lounge-1','Sunlit loun
 
 /* GROUPS */
 pages.groups={title:'Group Stays in Manali: Teams, Students & Travel Agencies | Hamta Homestay',desc:'Bring your group to The Hamta Homestay in Manali. Corporate teams, school and college groups, nonprofits and travel agencies. Stay, food and calm under one roof.',
-body:`${pageHero('Bring your people','Groups','ext-close','The Hamta Homestay building seen from below')}
+body:`${pageHero('Bring your people','Groups','night','Hamta Homestay lit up at night among flowers')}
 <section><div class="wrap">
   <div class="sec-head"><p class="eyebrow">Who we host</p><h2>One home, many kinds of groups</h2><p class="lead">We host groups of 15 to 20 guests across 8 rooms. Tell us your dates and group size and we reply with a plan.</p></div>
   <div class="cols3 light-cols">
@@ -263,19 +261,19 @@ body:`${pageHero('Bring your people','Groups','ext-close','The Hamta Homestay bu
     <div class="pillar rv d1"><h3>Students</h3><p>School, college and university groups, study tours and workshops.</p></div>
     <div class="pillar rv d2"><h3>Organisations</h3><p>Nonprofits, wellness groups, travel agencies and tour operators.</p></div>
   </div>
-  <div class="split" style="margin-top:80px"><div class="frame wide reveal-img">${img('lounge-3','Shared lounge with wooden tables')}</div>
+  <div class="split" style="margin-top:80px"><div class="frame wide reveal-img">${img('lounge','Long wooden lounge with large windows and shared tables')}</div>
   <div class="rv"><h2>Meals, together</h2><p class="lead" style="margin-top:16px">Breakfast is included with every stay. Our chef cooks more on request. Share dietary needs and group size in advance.</p><ul class="ticks"><li>Shared lounge for sessions and meals</li><li>Yoga and meditation on request</li><li>Games and a garden for downtime</li></ul><div style="margin-top:28px"><a class="btn btn-dark" href="/book?type=group">Request a group quote</a></div></div></div>
 </div></section>`};
 
 /* EXPERIENCES */
 pages.experiences={title:'Around Hamta: Treks, River & Himalayan Views near Manali',desc:'Forest trails, a river nearby, mountain views and quiet. What to do around The Hamta Homestay in Manali, Himachal Pradesh.',
-body:`${pageHero('Around Hamta','Experiences','view-valley','Green valley with pine trees and cloud over Himalayan peaks')}
+body:`${pageHero('Around Hamta','Experiences','lounge','Long wooden lounge with large windows at The Hamta Homestay')}
 <section><div class="wrap">
   <div class="sec-head"><p class="eyebrow">The setting</p><h2>Forest, river, peaks</h2><p class="lead">Forest, a river nearby, trekking and mountain views that change by the hour.</p></div>
   <div class="cols3" style="gap:18px">
-    <div class="frame reveal-img rv">${img('forest-trail','Forest trail through tall pines','')}</div>
-    <div class="frame reveal-img rv d1">${img('view-sunset-tall','Sunset over layered ridges','')}</div>
-    <div class="frame reveal-img rv d2">${img('view-clouds','Clouds around mountain peaks')}</div>
+    <div class="frame reveal-img rv">${img('view-2','Snow-covered mountain range above an autumn valley with a pond, nearby','')}</div>
+    <div class="frame reveal-img rv d1">${img('night','The Hamta Homestay lit up at night among flowers','')}</div>
+    <div class="frame reveal-img rv d2">${img('view-1','Snow-capped mountains above an autumn valley and a sunlit slope, nearby')}</div>
   </div>
 </div></section>
 <section style="background:var(--mist)"><div class="wrap">
@@ -286,15 +284,15 @@ body:`${pageHero('Around Hamta','Experiences','view-valley','Green valley with p
   </div>
   <p class="note" style="margin-top:30px">Distances and drive times (for example Hadimba Devi Temple is about 50 minutes by road per Google) vary by traffic and season. Ask us before you plan the day.</p>
 </div></section>
-<section><div class="wrap split"><div class="frame wide reveal-img">${img('rooftop','View over rooftops to the mountains')}</div><div class="rv"><h2>Come for the view. Stay for the food.</h2><p class="lead" style="margin:16px 0 28px">Our chef cooks on request, from meals to sweets.</p><a class="btn btn-dark" href="/menu">See the menu</a></div></div></section>`};
+<section><div class="wrap split"><div class="frame wide reveal-img">${img('view-1','Snow-capped mountains above an autumn valley and a sunlit slope, nearby')}</div><div class="rv"><h2>Come for the view. Stay for the food.</h2><p class="lead" style="margin:16px 0 28px">Our chef cooks on request, from meals to sweets.</p><a class="btn btn-dark" href="/menu">See the menu</a></div></div></section>`};
 
 /* MENU */
 pages.menu={title:'Food | The Hamta Homestay, Manali',desc:'Home cooking at The Hamta Homestay in Manali. Breakfast is included with every stay. Our in-house chef cooks more meals and sweets on request.',
-body:`${pageHero('Food','Eat well','hero-poster','The Hamta Homestay with its teal roof among pine forest')}
+body:`${pageHero('Food','Eat well','view-2','Snow-covered mountain range above an autumn valley with a pond, nearby')}
 <section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Home cooking from our own chef. Breakfast is included with every stay. More meals and sweets on request.</p></div></section>
 <section class="rooms-ed"><div class="wrap">
-  <figure class="re-a rv">${img('lounge-3','Long shared lounge with wooden tables and large windows',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
-  <figure class="re-b rv d1">${img('food-omelette','Plate of omelette',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
+  <figure class="re-a rv">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
+  <figure class="re-b rv d1">${img('cupboard','Wooden cupboard in a Hamta room',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
 </div></section>
 <section class="rates"><div class="wrap narrow">
   <p class="kicker">The menu</p>
@@ -305,7 +303,7 @@ body:`${pageHero('Food','Eat well','hero-poster','The Hamta Homestay with its te
 
 /* HANDBOOK */
 pages.handbook={title:'Guest Handbook | The Hamta Homestay, Manali',desc:'Everything to know for your stay at The Hamta Homestay, Manali: arrival, rooms, meals, Wi-Fi, mountain tips and house notes.',
-body:`${pageHero('Guest handbook','Before and during your stay','view-terrace','Clouds over green mountains from the Hamta terrace')}
+body:`${pageHero('Guest handbook','Before and during your stay','view-3','A river running below snow-dusted mountains, nearby')}
 <section><div class="wrap hb" style="max-width:860px">
   <p class="lead">A short guide for your stay. Specific details are shared by your host when your booking is confirmed.</p>
   <div class="toc"><a href="#arrive">Arrival</a><a href="#room">Your stay</a><a href="#food">Food</a><a href="#work">Work &amp; Wi-Fi</a><a href="#mountain">Mountain tips</a><a href="#help">Help</a></div>
@@ -318,17 +316,18 @@ body:`${pageHero('Guest handbook','Before and during your stay','view-terrace','
 </div></section>`};
 
 /* GALLERY */
-const G=[
+const G0=[
  ['ext-day','Exterior','The Hamta Homestay building in blue and white'],['ext-night','Exterior','Hamta Homestay lit up at night among flowers'],['ext-close','Exterior','Close view of the homestay balconies'],['ext-green','Exterior','Homestay teal roof surrounded by green hills'],
  ['room-a1','Rooms','Room photo'],['room-a2','Rooms','Room with seating'],['room-a3','Rooms','Bed with cushions and lamps'],['room-a4','Rooms','Bedroom with warm lamps'],['room-b1','Rooms','Bedroom with rug'],['room-b2','Rooms','Bed with red blanket'],['room-b3','Rooms','Bedroom with striped throw'],['room-b4','Rooms','Room with rug and curtains'],['room-c1','Rooms','Room with high wooden ceiling'],['room-c3','Rooms','Room with patterned curtains'],['bath-1','Rooms','Clean bathroom with wooden door'],['bath-2','Rooms','Bathroom'],
  ['lounge-1','Lounge','Lounge with wooden tables'],['lounge-2','Lounge','Lounge from the other end'],['lounge-3','Lounge','Lounge with large windows'],['lounge-4','Lounge','Corner of the lounge'],['workspace','Lounge','Laptop on a lounge table'],['desks','Lounge','Work desks in the lounge'],['balcony-seat','Lounge','Balcony seating'],['food-omelette','Lounge','Home-cooked food'],
  ['view-balcony','Views','Balcony view over pines'],['view-sunset','Views','Sunset over the ridges'],['view-sunset-tall','Views','Evening light over the valley'],['view-valley','Views','Green valley and cloud'],['view-clouds','Views','Clouds on the peaks'],['corridor-view','Views','Corridor view'],['rooftop','Views','Rooftops and mountains'],['forest-trail','Views','Forest trail nearby']];
-pages.gallery={title:'Photo Gallery | The Hamta Homestay, Manali',desc:'Photos of The Hamta Homestay in Manali: rooms, lounge, building and Himalayan views.',
-body:`${pageHero('Gallery','See the place','view-sunset','Orange sunset over the Himalayan ridge')}
+const G=[['lounge','Lounge','Long wooden lounge with large windows and shared tables'],['room-3','Rooms','Double bed with an arched wooden headboard and warm bedside lamps'],['room-2','Rooms','Bedroom with a wooden bed, patterned curtains and a window'],['night','Exterior','The Hamta Homestay lit up at night among flowers'],['room-8','Rooms','Sunlit room with a wooden double bed and a patterned bed runner'],['room-4','Rooms','Room with a double bed, chairs, a table and patterned curtains'],['room-1','Rooms','Room with a patterned bed cover, a seat and a wooden headboard'],['room-5','Rooms','Wooden double bed with bedside lamp and patterned curtains'],['room-7','Rooms','Double bed with a wooden headboard and bedside lamps'],['room-6','Rooms','Double bed with a wooden headboard and bedside lamps'],['cupboard','Rooms','Wooden cupboard with a kettle on top in a Hamta room'],['act-1','Activities','A paraglider above snow-dusted mountains and pine forest'],['act-2','Activities','A rider on a motorcycle outside a glass-fronted building with prayer flags, snow peaks behind'],['window-view','Rooms','View from a homestay window over pine trees, rooftops and the valley'],['window-view-2','Rooms','Another view from a homestay window, cedar trees and snow peaks beyond'],['night-nearby','Nearby','Night view nearby, a lit venue beside a river'],['view-3','Nearby','A river running below snow-dusted mountains, nearby'],['view-2','Nearby','Snow-covered mountain range above an autumn valley with a pond, nearby'],['view-4','Nearby','Snow-covered peak and a blue sky with a half moon, seen over village rooftops nearby'],['view-1','Nearby','Snow-capped mountains above an autumn valley and a sunlit slope, nearby']];
+pages.gallery={title:'Photo Gallery | The Hamta Homestay, Manali',desc:'Photos of The Hamta Homestay in Manali: rooms, lounge, building, nearby mountain views and activities.',
+body:`${pageHero('Gallery','See the place','view-3','A river running below snow-dusted mountains, nearby')}
 <section><div class="wrap">
-  <div class="chips" role="group" aria-label="Filter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="Rooms" aria-pressed="false">Rooms</button><button class="chip" data-f="Lounge" aria-pressed="false">Lounge &amp; food</button><button class="chip" data-f="Exterior" aria-pressed="false">Building</button><button class="chip" data-f="Views" aria-pressed="false">Views</button></div>
-  <div class="mosaic">${G.filter(x=>!['ext-close','ext-night','bath-1','bath-2','desks','workspace','lounge-4','lounge-5','balcony-seat','room-a3','room-a4','room-b1','room-b4','room-c1','lounge-1'].includes(x[0])).map(([n,c,a])=>`<button data-c="${c==='Lounge'?'Lounge':c}" data-full="/assets/img/${n}.webp" aria-label="Open photo: ${a}"><img src="/assets/img/${n}-sm.webp" alt="${a}" loading="lazy" decoding="async"></button>`).join('')}</div>
-  <p class="note">Photos of the homestay and the views around it.</p>
+  <div class="chips" role="group" aria-label="Filter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="Rooms" aria-pressed="false">Rooms</button><button class="chip" data-f="Lounge" aria-pressed="false">Lounge</button><button class="chip" data-f="Exterior" aria-pressed="false">Building</button><button class="chip" data-f="Nearby" aria-pressed="false">Nearby views</button><button class="chip" data-f="Activities" aria-pressed="false">Activities</button></div>
+  <div class="mosaic">${G.map(([n,c,a])=>`<button data-c="${c==='Lounge'?'Lounge':c}" data-full="/assets/img/${n}.webp" aria-label="Open photo: ${a}"><img src="/assets/img/${n}-sm.webp" alt="${a}" loading="lazy" decoding="async"></button>`).join('')}</div>
+  <p class="note">Photos of The Hamta Homestay and the views nearby.</p>
 </div></section>
 <div class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="x" aria-label="Close">×</button><button class="p" aria-label="Previous">‹</button><img alt=""><button class="n" aria-label="Next">›</button></div>`};
 
@@ -373,7 +372,7 @@ body:`<section class="book-hero"><div class="wrap"><p class="kicker">Booking req
     <div class="wiz-nav"><button class="btn btn-line" type="button" id="w-back" hidden>Back</button><button class="btn btn-dark" type="button" id="w-next">Continue</button><button class="btn btn-gold" type="submit" id="w-send" hidden>Send booking request</button></div>
     <div id="form-msg" class="msg" hidden role="status"></div>
   </form>
-  <aside class="book-side"><figure>${img('view-valley','Green valley and pine trees under Himalayan cloud',{sizes:'(max-width:860px) 92vw, 34vw'})}</figure>
+  <aside class="book-side"><figure>${img('lounge','Long wooden lounge with large windows at The Hamta Homestay',{sizes:'(max-width:860px) 92vw, 34vw'})}</figure>
     <ol class="next"><li><b>01</b> We check your dates</li><li><b>02</b> You get a clear quote and payment details</li><li><b>03</b> You pay in advance to confirm</li></ol>
     <p><a class="btn btn-line" data-wa="Hello, I would like to book at The Hamta Homestay." href="#" hidden target="_blank" rel="noopener">Prefer WhatsApp</a></p></aside>
 </div></section>`};
@@ -391,7 +390,7 @@ body:`<section style="padding-top:130px"><div class="wrap">
     <div class="rv"><h3>Find us</h3><p style="margin:12px 0 4px;color:var(--ink-2)">The Hamta Homestay<br>15th Mile, Hallan-i, Manali<br>Himachal Pradesh 175136, India<br>Plus code 45V6+J9 Hallan-i</p><p style="margin:6px 0;color:var(--ink-2);font-size:14px">Bookings and questions: hello@hamta.in. Help with an existing stay: support@hamta.in.</p><p style="margin:10px 0;color:var(--ink-2)">Your host: Kabir</p>
       <p style="margin:14px 0"><a data-email href="#" hidden style="text-decoration:underline"></a><br><a data-support href="#" hidden style="text-decoration:underline"></a><br><a data-phone href="#" hidden style="text-decoration:underline"></a></p>
       <p>${IG?`<a class="btn btn-line" href="${IG}" target="_blank" rel="noopener">Instagram</a> `:''}<a class="btn btn-line" href="${MAPS}" target="_blank" rel="noopener">Open in Google Maps</a></p>
-      <div class="frame wide reveal-img" style="margin-top:28px">${img('ext-far','Hamta Homestay teal roof among pine forest')}</div></div>
+      <div class="frame wide reveal-img" style="margin-top:28px">${img('night','Hamta Homestay lit up at night among flowers')}</div></div>
   </div>
 </div></section>`};
 
@@ -429,10 +428,13 @@ pages.privacy=prose('Privacy','How The Hamta Homestay handles guest details sent
 /* 404 */
 pages['404']={title:'Page not found | The Hamta Homestay',desc:'Page not found.',light:true,noindex:true,body:`<section style="padding-top:180px;text-align:center"><div class="wrap sec-head center"><h1>Lost in the hills?</h1><p class="lead">That page is not here. Let's get you back.</p><a class="btn btn-dark" href="/">Back home</a></div></section>`};
 
+const ABOUT_PH={hero:'lounge',heroAlt:'Long wooden lounge with large windows at The Hamta Homestay',strip:[['room-3','Double bed with an arched wooden headboard and warm bedside lamps'],['room-2','Bedroom with a wooden bed, patterned curtains and a window'],['room-8','Sunlit room with a wooden double bed and a patterned bed runner'],['room-4','Room with a double bed, chairs, a table and patterned curtains'],['night','The Hamta Homestay lit up at night among flowers'],['room-5','Wooden double bed with bedside lamp and patterned curtains']]};
+import aboutFn from './about.mjs';
+pages.about=aboutFn({img,pageHero,PH:ABOUT_PH});
 const urls=[];
 for(const [file,p] of Object.entries(pages)){
   fs.writeFileSync(path.join(root,file+'.html'),layout({file,...p}));
-  if(!p.noindex) urls.push(file==='index'?'':file);
+  if(!p.noindex&&!p.nosite) urls.push(file==='index'?'':file);
 }
 fs.writeFileSync(path.join(root,'robots.txt'),LIVE?'User-agent: *\nAllow: /\nSitemap: https://www.hamta.in/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
 fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u=>`  <url><loc>${SITE}/${u}</loc></url>`).join('\n')}\n</urlset>\n`);

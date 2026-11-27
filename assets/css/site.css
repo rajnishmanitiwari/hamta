@@ -416,3 +416,36 @@ label small{font-weight:400;color:#6b7782;letter-spacing:0}label em{font-weight:
 .strip span,.price-tag small,.ptable td small,.ptable th small{color:#5f6a64}.steps li{color:#5c6770}.steps li.on{color:#111}
 .note{color:#5f6a64}
 :root{--mute:#5f6a64}.est small{color:#5f6a64}
+/* about */
+.ab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ab-grid figure{overflow:hidden;aspect-ratio:4/5;background:#eee}.ab-grid img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:700px){.ab-grid{grid-template-columns:repeat(2,1fr)}}
+.ab-two{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:26px}@media(max-width:760px){.ab-two{grid-template-columns:1fr;gap:24px}}
+.ab-two h3{font-family:var(--serif);text-transform:uppercase;font-weight:400;letter-spacing:.04em;font-size:22px;margin-bottom:10px;color:#0f1a22}
+.plain{list-style:none;padding:0}.plain li{padding:10px 0;border-bottom:1px solid rgba(20,30,40,.12);font-size:16px;line-height:1.5;color:#2a3640}
+.ab-rules p{margin:12px 0}
+.ab-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn-ghost-d{border:1px solid #0f1a22;color:#0f1a22;background:transparent}.btn-ghost-d:hover{background:#0f1a22;color:#fff}
+.ab-views{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.ab-views figure{overflow:hidden;aspect-ratio:4/3;background:#eee}.ab-views img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:700px){.ab-views{grid-template-columns:1fr}}
+/* blended photos: crisp detail, rounded soft-edged silhouettes that melt into the page, restrained layered depth */
+:root{--bm:linear-gradient(90deg,transparent 0,#000 3.2%,#000 96.8%,transparent 100%),linear-gradient(180deg,transparent 0,#000 3.2%,#000 96.8%,transparent 100%)}
+.duo figure,.rooms-ed figure,.ab-views figure,.ab-grid figure,.book-side figure,.mosaic button,.card .ph{overflow:visible!important;background:none!important;filter:drop-shadow(0 16px 18px rgba(24,44,62,.13)) drop-shadow(0 2px 4px rgba(24,44,62,.06))}
+.duo figure img,.rooms-ed figure img,.ab-views figure img,.ab-grid figure img,.book-side figure img,.mosaic button img,.card .ph img{border-radius:26px;-webkit-mask-image:var(--bm);-webkit-mask-composite:source-in;mask-image:var(--bm);mask-composite:intersect}
+.strips{filter:drop-shadow(0 18px 20px rgba(24,44,62,.14))}
+.strip-i{border-radius:26px;-webkit-mask-image:var(--bm);-webkit-mask-composite:source-in;mask-image:var(--bm);mask-composite:intersect}
+.duo-a{transform:translateY(-14px)}.duo-b{transform:translateY(18px)}
+.mosaic{gap:clamp(10px,2vw,22px)}
+.pin-img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+.page-hero img,.hero2-img{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 80%,transparent 100%)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.mosaic button:hover,.rooms-ed figure:hover,.ab-views figure:hover{transform:translateY(-4px);transition:transform .6s var(--ease)}}
+/* containment: nothing may widen the page */
+.ftr .g{grid-template-columns:1.4fr 1fr 1fr 1fr}.ftr .g>*{min-width:0}.ftr a,.ftr p{overflow-wrap:anywhere}
+@media(max-width:860px){.ftr .g{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.sheet{visibility:hidden}.menu-open .sheet{visibility:visible}
+/* closed strip labels run vertically so they always fit the narrow panel */
+@media(min-width:701px){
+.strips:not(:hover) .strip-i:not(.on) .cap,.strips:hover .strip-i:not(:hover) .cap{left:14px;right:auto;bottom:18px}
+.strips:not(:hover) .strip-i:not(.on) .cap b,.strips:hover .strip-i:not(:hover) .cap b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:clamp(18px,1.9vw,28px);white-space:nowrap}
+.strips:not(:hover) .strip-i:not(.on) .cap i,.strips:hover .strip-i:not(:hover) .cap i{display:none}}
+.strip-i .cap b,.strip-i .cap i{text-shadow:0 1px 12px rgba(0,0,0,.55)}
