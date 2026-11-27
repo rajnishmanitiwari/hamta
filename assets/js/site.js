@@ -9,7 +9,7 @@
       if(!hdr.classList.contains('light')) hdr.classList.toggle('solid',y>60);
       hdr.classList.toggle('hide',y>last && y>400 && !d.body.classList.contains('menu-open'));
     }
-    if(fab) fab.classList.toggle('off',y<500);
+    if(fab){var ft=d.querySelector('.ftr');var inFt=ft&&ft.getBoundingClientRect().top<window.innerHeight-90;fab.classList.toggle('off',y<500||inFt)}
     last=y;
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
