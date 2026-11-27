@@ -32,7 +32,7 @@ export default function about({img,pageHero,PH}){
   ${row('Stay, two guests','₹20,000<small>per month</small>','Same room')}
   ${row('Full meal package, one guest','₹24,000<small>per month</small>','Meals cooked by our chef')}
   ${row('Full meal package, two guests','₹30,000<small>per month</small>','Same room')}
-  ${row('Heater','₹1,000<small>per day</small>','Only if you use one. ₹3,000 per month for monthly stays')}
+  ${row('Heater','₹500<small>per day</small>','Only if you use one. ₹3,000 per month for monthly stays')}
  </tbody></table>
  <p class="note">Peak dates cost more: national holidays, busy weekends (Saturday and Sunday, or a holiday joined to a weekend), the last week of December, the first week of January and the first two weeks of February. From December to mid-February, rates with breakfast range from ₹2,000 to ₹3,000 a night. We confirm the exact amount for your dates before you pay. A month is the calendar month or 30 days.</p>
 </div></section>

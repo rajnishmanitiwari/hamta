@@ -71,7 +71,7 @@ ${fabHtml}
     <div class="bot"><span>© <span data-year>2026</span> The Hamta Homestay, 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136</span><span><a style="display:inline" href="/terms">Terms</a> · <a style="display:inline" href="/cancellation-refund">Cancellation</a> · <a style="display:inline" href="/house-rules">House rules</a> · <a style="display:inline" href="/privacy">Privacy</a></span></div>
   </div>
 </footer>
-<script src="/assets/js/config.js" defer></script>
+<script src="/assets/js/config.js${file==='book'?'?v=ht500':''}" defer></script>
 <script src="/assets/js/site.js${file==='book'?'?v=bk2':''}" defer></script>
 <script src="/assets/js/motion.js" defer></script>
 </body>
@@ -195,7 +195,7 @@ body:`${pageHero('Rooms &amp; rates','Stay',  'room-2','Bedroom with a wooden be
       <tr><th>Full meal package, one guest<small>Meals cooked by our chef. Breakfast already included</small></th><td class="n">₹2,500<small>per night</small></td></tr>
       <tr><th>Full meal package, two guests<small>Same room</small></th><td class="n">₹3,000<small>per night</small></td></tr>
       <tr><th>Stay 7 nights or more<small>15% off the full room and meals bill. A week, one room with breakfast: ₹14,000 becomes ₹11,900</small></th><td class="n">15% off</td></tr>
-      <tr><th>Heater electricity<small>Only if you use a heater</small></th><td class="n">₹1,000<small>per day</small></td></tr>
+      <tr><th>Heater electricity<small>Only if you use a heater</small></th><td class="n">₹500<small>per day</small></td></tr>
     </tbody></table>
     <p class="note">All taxes are included. Peak dates cost more: national holidays, busy weekends (Saturday and Sunday, or a holiday joined to a weekend), the last week of December, the first week of January and the first two weeks of February. From December to mid-February, rates with breakfast range from ₹2,000 to ₹3,000 per night. We confirm the exact amount for your dates before you pay.</p>
   </div>
@@ -309,7 +309,7 @@ body:`${pageHero('Guest handbook','Before and during your stay','view-3','A rive
   <p class="lead">A short guide for your stay. Specific details are shared by your host when your booking is confirmed.</p>
   <div class="toc"><a href="#arrive">Arrival</a><a href="#room">Your stay</a><a href="#food">Food</a><a href="#work">Work &amp; Wi-Fi</a><a href="#mountain">Mountain tips</a><a href="#help">Help</a></div>
   <h2 id="arrive">Arrival</h2><p>We are at 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136. Share your arrival time and we guide you in. Check-in is from 12 PM and check-out is at 11 AM the next day. You are welcome to arrive at any time of day, with no extra charge. Mountain roads and weather can slow you down, so plan some buffer.</p>
-  <h2 id="room">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹1,000 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
+  <h2 id="room">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹500 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
   <h2 id="food">Food</h2><p>Our cook prepares meals on request. See <a href="/menu" style="text-decoration:underline">food</a>. Tell us what you like and any dietary needs. Breakfast is included with daily stays. Other meals are extra unless you take the full meal package.</p>
   <h2 id="work">Work &amp; Wi-Fi</h2><p>Wi-Fi and constant electricity are available. The shared lounge has work tables. Hill internet can dip in bad weather, so keep a backup plan for critical calls.</p>
   <h2 id="mountain">Mountain tips</h2><ul><li>Layers beat one big jacket. Evenings are cold even after a warm day.</li><li>Altitude: drink water, go slow on the first day.</li><li>Check weather and road status before trekking. Use licensed local guides for long routes.</li></ul>
@@ -347,7 +347,7 @@ body:`<section class="book-hero"><div class="wrap"><p class="kicker">Booking req
       <div class="row"><label>Check-in<input type="date" name="check_in" required></label><label class="only-daily">Check-out<input type="date" name="check_out"></label><label class="only-monthly" hidden>Months<input type="number" name="months" min="1" max="12" value="1"></label></div>
       <div class="row"><label>Guests in total<input type="number" name="total_guests" min="1" max="30" value="1" required></label><label>Of them, children under 12<input type="number" name="children" min="0" max="20" value="0"></label></div>
       <div class="row"><label>Meals<select name="meals"><option value="no">Stay only (breakfast included on daily stays)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
-      <label class="chk"><input type="checkbox" name="heater"> I will use a room heater (₹1,000 a day, ₹3,000 a month)</label>
+      <label class="chk"><input type="checkbox" name="heater"> I will use a room heater (₹500 a day, ₹3,000 a month)</label>
       <div class="est" aria-live="polite"><small>Indicative total, not an amount to pay</small><b id="est-out">Pick your dates</b><small id="est-note"></small></div>
     </fieldset>
     <fieldset data-step="2" hidden><legend>About you</legend>

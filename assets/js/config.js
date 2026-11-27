@@ -18,10 +18,10 @@ window.HAMTA = {
   formLive: true,
   // INR. Per room per night, room hosts up to 2 guests.
   rates: {
-    nightly: { room: 2000, meal1: 2500, meal2: 3000, heater: 1000 },
+    nightly: { room: 2000, meal1: 2500, meal2: 3000, heater: 500 },
     monthly: { solo: 15000, duo: 20000, soloMeals: 24000, duoMeals: 30000, heater: 3000 },
     weeklyDiscount: 0.15
   },
-  // Confirmed by the owner on 27 Nov 2026: 15% off stays of 7+ nights (full room+meals bill), heater Rs 1,000/day or Rs 3,000/month, taxes included.
+  // Confirmed by the owner on 27 Nov 2026 (daily heater changed to Rs 500 on 28 Nov): 15% off stays of 7+ nights (full room+meals bill), heater Rs 500/day or Rs 3,000/month, taxes included.
   confirmed: { weekly: true, heater: true }
 };
