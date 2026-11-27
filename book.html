@@ -44,7 +44,7 @@
       <div class="row"><label>Type of stay<select name="stay_type"><option value="daily">A few nights</option><option value="monthly">A month or more</option><option value="group">A group</option></select></label><label>Rooms<input type="number" name="rooms" min="1" max="8" value="1" required></label></div>
       <div class="row"><label>Check-in<input type="date" name="check_in" required></label><label class="only-daily">Check-out<input type="date" name="check_out"></label><label class="only-monthly" hidden>Months<input type="number" name="months" min="1" max="12" value="1"></label></div>
       <div class="row"><label>Guests in total<input type="number" name="total_guests" min="1" max="30" value="1" required></label><label>Of them, children under 12<input type="number" name="children" min="0" max="20" value="0"></label></div>
-      <div class="row"><label>Meals<select name="meals"><option value="no">Stay with breakfast (included)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
+      <div class="row"><label>Meals<select name="meals"><option value="no">Stay only (breakfast included on daily stays)</option><option value="yes">Full meal package</option></select></label><label class="chk" style="align-self:end"><input type="checkbox" name="extra_mattress"> A third guest in a room on an extra mattress</label></div>
       <label class="chk"><input type="checkbox" name="heater"> I will use a room heater (₹1,000 a day, ₹3,000 a month)</label>
       <div class="est" aria-live="polite"><small>Indicative total, not an amount to pay</small><b id="est-out">Pick your dates</b><small id="est-note"></small></div>
     </fieldset>
@@ -89,7 +89,7 @@
   </div>
 </footer>
 <script src="/assets/js/config.js" defer></script>
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v=bk2" defer></script>
 <script src="/assets/js/motion.js" defer></script>
 </body>
 </html>

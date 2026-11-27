@@ -22,14 +22,14 @@ export default function about({img,pageHero,PH}){
 </div></section>
 <section class="rates"><div class="wrap">
  <p class="kicker">Rooms and rates</p>
- <p class="lead">Eight rooms, each with a double bed. Two guests per room, a third on an extra mattress on request. Breakfast is included with every stay. Prices are in rupees, taxes included, the same for guests from India and abroad.</p>
+ <p class="lead">Eight rooms, each with a double bed. Two guests per room, a third on an extra mattress on request. Breakfast is included with daily stays. Prices are in rupees, taxes included, the same for guests from India and abroad.</p>
  <table class="ptable"><tbody>
   ${row('Stay with breakfast','₹2,000<small>per night</small>','Up to 2 guests, per room')}
   ${row('Full meal package, one guest','₹2,500<small>per night</small>','Meals cooked by our chef, breakfast included')}
   ${row('Full meal package, two guests','₹3,000<small>per night</small>','Same room')}
   ${row('Seven nights or more','15% off','15% off the room and meals bill')}
-  ${row('Stay with breakfast, one guest','₹15,000<small>per month</small>','Monthly. Cook and cleaner available')}
-  ${row('Stay with breakfast, two guests','₹20,000<small>per month</small>','Same room')}
+  ${row('Stay, one guest','₹15,000<small>per month</small>','Monthly. Cook and cleaner available')}
+  ${row('Stay, two guests','₹20,000<small>per month</small>','Same room')}
   ${row('Full meal package, one guest','₹24,000<small>per month</small>','Meals cooked by our chef')}
   ${row('Full meal package, two guests','₹30,000<small>per month</small>','Same room')}
   ${row('Heater','₹1,000<small>per day</small>','Only if you use one. ₹3,000 per month for monthly stays')}
