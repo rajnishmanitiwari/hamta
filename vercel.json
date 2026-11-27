@@ -29,5 +29,17 @@
       ]
     }
   ],
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/workation",
+      "destination": "https://workation.hamta.in/",
+      "permanent": true
+    },
+    {
+      "source": "/workation/(.*)",
+      "destination": "https://workation.hamta.in/",
+      "permanent": true
+    }
+  ]
 }
