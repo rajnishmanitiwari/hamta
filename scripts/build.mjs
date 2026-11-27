@@ -63,7 +63,7 @@ ${fabHtml}
   <div class="wrap">
     <div class="g">
       <div><div class="big">Hamta</div><p style="margin-top:14px;max-width:34ch;opacity:.8">Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.</p></div>
-      <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="/book">Request a booking</a></div>
+      <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="/workation">Workation</a><a href="/book">Request a booking</a></div>
       <div><p class="fh">Guests</p><a href="/menu">Menu</a><a href="/handbook">Handbook</a><a href="/experiences">Around Hamta</a><a href="/gallery">Gallery</a></div>
       <div><p class="fh">Say hello</p><a href="/contact">Contact</a>${IG?`<a href="${IG}" rel="noopener" target="_blank">Instagram</a>`:''}<a data-email href="#" hidden></a><a data-support href="#" hidden></a><a data-phone href="#" hidden></a></div>
     </div>
@@ -431,6 +431,7 @@ pages['404']={title:'Page not found | The Hamta Homestay',desc:'Page not found.'
 const ABOUT_PH={hero:'lounge',heroAlt:'Long wooden lounge with large windows at The Hamta Homestay',strip:[['room-3','Double bed with an arched wooden headboard and warm bedside lamps'],['room-2','Bedroom with a wooden bed, patterned curtains and a window'],['room-8','Sunlit room with a wooden double bed and a patterned bed runner'],['room-4','Room with a double bed, chairs, a table and patterned curtains'],['night','The Hamta Homestay lit up at night among flowers'],['room-5','Wooden double bed with bedside lamp and patterned curtains']]};
 import aboutFn from './about.mjs';
 pages.about=aboutFn({img,pageHero,PH:ABOUT_PH});
+import workationFn from './workation.mjs'; pages.workation=workationFn();
 const urls=[];
 for(const [file,p] of Object.entries(pages)){
   fs.writeFileSync(path.join(root,file+'.html'),layout({file,...p}));
