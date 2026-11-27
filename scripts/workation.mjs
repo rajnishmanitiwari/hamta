@@ -11,7 +11,7 @@ const PERKS=[
 ['Remote worker community','Work and live alongside a community of remote workers, founders and creators at the house.','people'],
 ['Evening card games','Easy evenings over card games with the group once the work is done.','cards'],
 ['Movie nights','Community screenings to unwind, laugh and connect.','film'],
-['Yoga and meditation sessions','Yoga and meditation sessions in-house, with mountain views.','sun'],
+['Yoga and meditation sessions','Yoga and meditation sessions in-house, with mountain views. Part of the Full reset experience.','sun'],
 ['Group trips','Group trips to nearby treks, waterfalls, lakes and places around Manali.','peak'],
 ]; // each item: ['Title','Description','icon']
 const perkCards=()=>PERKS.map(([t,d,i='sun'])=>`<li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-${i}"/></svg><h3>${t}</h3><p>${d}</p></li>`).join('');
@@ -21,7 +21,7 @@ const FAQ=[
 ['What is a workation at The Hamta Homestay?','A workation is a 7 day, 7 night stay in Manali where you keep doing your work and reset how you live around it. It combines morning yoga and movement, structured deep work windows, guided treks to Bijli Mahadev, Sissu, nearby spots and waterfalls, complimentary river rafting, a remote worker community, evening card games, movie nights, yoga and meditation sessions, group trips and other curated evening unwind experiences, and a closing clarity session, in a quiet mountain home.'],
 ['Where does the workation take place?','At The Hamta Homestay, 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136, India.'],
 ['Who is the workation for?','Companies, organisations, teams, universities, remote professionals, founders, creators, freelancers and anyone who is building something and feeling stretched.'],
-['What is included?','A 7 day, 7 night mountain stay on single sharing (one guest per room; two guests travelling together can share), vegetarian and non-vegetarian meals throughout the stay, daily morning movement sessions, structured deep work windows, guided treks to Bijli Mahadev, Sissu, nearby spots and waterfalls, complimentary river rafting, a remote worker community and activities including evening card games, movie nights, yoga and meditation sessions and group trips, all included in every package, and curated evening unwind experiences and a final reset and clarity session.'],
+['What is included?','Every package includes a 7 day, 7 night mountain stay on single sharing (one guest per room; two guests travelling together can share), vegetarian and non-vegetarian meals throughout the stay, daily morning movement sessions, guided treks to Bijli Mahadev, Sissu, nearby spots and waterfalls, complimentary river rafting, and a remote worker community with evening card games, movie nights and group trips. The Full reset experience adds yoga and meditation sessions and the structured reset programme: structured deep work windows, curated evening unwind experiences and a closing clarity session.'],
 ['Is there Wi-Fi and a place to work?','Yes. The homestay has Wi-Fi, constant electricity and a shared lounge with work tables.'],
 ['How is workation pricing different from a normal stay?','Workation pricing is separate from standard nightly and monthly rates. Use the workation enquiry form and we reply with a plan and a price for your group.'],
 ['How much does the workation cost?','The first week (7 days and 7 nights) is ₹14,999 per person for the Full reset experience or ₹12,999 per person for the Essential reset. If you continue for another week the next week is ₹10,999 or ₹9,499 per person. For a month or more after the first week it is ₹36,000 or ₹31,000 a month per person. Workation pricing is separate from our standard nightly and monthly rates, and we confirm the plan and price for your group.'],
@@ -107,12 +107,13 @@ ${wall}
   <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-bed"/></svg><h3>7 days, 7 nights</h3><p>Mountain stay on single sharing. Two guests travelling together can share a room.</p></li>
   <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-bowl"/></svg><h3>Vegetarian and non-vegetarian meals</h3><p>Vegetarian and non-vegetarian meals throughout the stay.</p></li>
   <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-sun"/></svg><h3>Morning movement</h3><p>Daily morning movement sessions with mountain views.</p></li>
-  <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-laptop"/></svg><h3>Deep work windows</h3><p>Structured deep work windows for focused, undistracted execution.</p></li>
+  <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-laptop"/></svg><h3>Deep work windows</h3><p>Structured deep work windows for focused, undistracted execution. Part of the Full reset experience.</p></li>
   <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-peak"/></svg><h3>Guided treks</h3><p>Guided treks to Bijli Mahadev, Sissu, nearby spots and waterfalls.</p></li>
   <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-sun"/></svg><h3>River rafting</h3><p>Complimentary river rafting, included in every package.</p></li>
-  <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-pen"/></svg><h3>Evenings and closing</h3><p>Curated evening unwind experiences and a final reset and clarity session.</p></li>
+  <li data-pc>${pin}<svg class="ic" aria-hidden="true"><use href="#ic-pen"/></svg><h3>Evenings and closing</h3><p>Curated evening unwind experiences and a final reset and clarity session. Part of the Full reset experience.</p></li>
   ${perkCards()}
  </ul>
+ <p class="wk-fine">Yoga and meditation sessions, the structured deep work windows and the closing clarity session come with the Full reset experience. Everything else above is in every package.</p>
  <p class="wk-fine wk-quote">This is not a vacation. It is a structured upgrade to how you live and work.</p>
 </div></section>
 
@@ -128,7 +129,7 @@ ${wall}
 </div></section>
 
 <section class="wk-prog" id="programme"><div class="wrap">
- <div class="wk-head"><p class="eyebrow">The week</p><h2>Day by day</h2><p class="lead">From arrival to clarity, with deep work and mountain mornings in between.</p></div>
+ <div class="wk-head"><p class="eyebrow">The week</p><h2>Day by day</h2><p class="lead">From arrival to clarity, with deep work and mountain mornings in between. This is the Full reset programme; the Essential reset keeps the stay, meals, morning movement, guided treks and community, without the structured programme and yoga and meditation sessions.</p></div>
  <div class="wk-days">
 ${day(1,'Sunday','Arrival in Manali',['Check in, settle in, slow down','Light acclimatisation work','Easy work block to align your focus and set your intentions for the week','Evening trek','Sunset walk through the mountains. Ground yourself in the landscape'])}
 ${day(2,'Monday','Find your rhythm',['Morning yoga with mountain views','Breathwork, mobility, intentional start','Scenic working hours','Deep focus sessions in curated workspaces with a Himalayan backdrop','Local Manali walk','Slow exploration of the village. Conversations, culture and community'])}
@@ -169,8 +170,8 @@ ${ic('peak','Reset','A garden, riverside and mountain views, and yoga and medita
 <section class="wk-price" id="pricing"><div class="wrap">
  <div class="wk-head"><p class="eyebrow">Pricing</p><h2>Workation pricing</h2><p class="lead">Workation pricing is per person and separate from our standard nightly and monthly rates.</p></div>
 ${SHOW_PRICES?`<div class="wk-tiers">
-  <div class="tier" data-pc>${pin}<p class="tn">Full reset experience</p><p class="tp">₹14,999</p><p class="tu">First week, 7 days and 7 nights, per person</p><p>Includes stay, all meals, guided activities, complimentary river rafting, the remote worker community with evening card games, movie nights, yoga and meditation sessions and group trips, and the structured reset framework. For those who want the complete workation immersion.</p><ul class="ext"><li><span>Continue for another week, per person</span><b>₹10,999</b></li><li><span>Stay a month or more after your first week, per person</span><b>₹36,000 a month</b></li></ul></div>
-  <div class="tier" data-pc>${pin}<p class="tn">Essential reset</p><p class="tp">₹12,999</p><p class="tu">First week, 7 days and 7 nights, per person</p><p>Includes mountain stay, meals, a curated work setup, complimentary river rafting and the remote worker community with evening card games, movie nights, yoga and meditation sessions and group trips. For those who prefer a lighter structure.</p><ul class="ext"><li><span>Continue for another week, per person</span><b>₹9,499</b></li><li><span>Stay a month or more after your first week, per person</span><b>₹31,000 a month</b></li></ul></div>
+  <div class="tier" data-pc>${pin}<p class="tn">Full reset experience</p><p class="tp">₹14,999</p><p class="tu">First week, 7 days and 7 nights, per person</p><p>Includes stay, all meals, daily morning movement, guided treks, complimentary river rafting, the remote worker community with evening card games, movie nights, yoga and meditation sessions and group trips, and the full structured reset programme with deep work windows and a closing clarity session. For those who want the complete workation immersion.</p><ul class="ext"><li><span>Continue for another week, per person</span><b>₹10,999</b></li><li><span>Stay a month or more after your first week, per person</span><b>₹36,000 a month</b></li></ul></div>
+  <div class="tier" data-pc>${pin}<p class="tn">Essential reset</p><p class="tp">₹12,999</p><p class="tu">First week, 7 days and 7 nights, per person</p><p>Includes mountain stay, all meals, a curated work setup, daily morning movement, guided treks, complimentary river rafting and the remote worker community with evening card games, movie nights and group trips. The structured reset programme and the yoga and meditation sessions come with the Full reset. For those who prefer a lighter structure.</p><ul class="ext"><li><span>Continue for another week, per person</span><b>₹9,499</b></li><li><span>Stay a month or more after your first week, per person</span><b>₹31,000 a month</b></li></ul></div>
  </div>
  <div class="tier trav" data-pc>${pin}<p class="tn">Travel support (optional)</p><p>Volvo bus coordination from Delhi to Himachal. Tickets are booked at actual cost. Group travel assistance is available for smoother planning.</p></div>
  <p class="wk-fine">Tell us your group size and dates in the form below and we confirm the plan and price for your group.</p>`:`<p class="wk-fine">We quote workation pricing for your group. Use the form below.</p>`}
