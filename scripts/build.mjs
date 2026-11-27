@@ -14,7 +14,9 @@ const IG=''; // Instagram URL: empty until owner confirms the account
 const img=(n,alt,{cls='',eager=false,sizes='(max-width:860px) 92vw, 50vw'}={})=>
   `<img class="${cls}" src="/assets/img/${n}.webp" srcset="/assets/img/${n}-sm.webp 800w, /assets/img/${n}.webp 1600w" sizes="${sizes}" alt="${alt}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 
-const NAV=[['stay','Stay'],['monthly-stay','Monthly'],['groups','Groups'],['events','Events'],['residency','Residency'],['gallery','Gallery']];
+const NAV_STAY=[['/stay','Rooms & rates'],['/monthly-stay','Monthly stays'],[`${WK}/`,'Workation'],['/groups','Group stays']];
+const NAV_TOP=[['events','Events'],['residency','Residency'],['gallery','Gallery']];
+const STAY_FILES=['stay','monthly-stay','groups','workation'];
 const pinDefs=`<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><radialGradient id="pw-g" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#f1dca4"/><stop offset=".55" stop-color="#c79c52"/><stop offset="1" stop-color="#8a6a2f"/></radialGradient><symbol id="pw-pin" viewBox="0 0 40 54"><ellipse cx="22" cy="49" rx="9" ry="3" fill="#000" opacity=".18"/><path d="M20 28v21" stroke="#9aa0a3" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="16" r="13" fill="url(#pw-g)"/><circle cx="15.5" cy="11" r="4.2" fill="#fff" opacity=".6"/></symbol></defs></svg>`;
 const pcard=(n,alt,cap,{cls='',ar='4/3',r='0deg',dy='0px',sizes='(max-width:700px) 46vw, 32vw'}={})=>`<figure class="pcard ${cls}" style="--r:${r};--dy:${dy};--ar:${ar}"><svg class="pcpin" viewBox="0 0 40 54" aria-hidden="true"><use href="#pw-pin"/></svg><div class="ph"><img src="/assets/img/${n}-sm.webp" srcset="/assets/img/${n}-sm.webp 800w, /assets/img/${n}.webp 1600w" sizes="${sizes}" alt="${alt}" loading="lazy" decoding="async"></div>${cap?`<figcaption>${cap}</figcaption>`:''}</figure>`;
 const logoSvg=`<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle class="sun" cx="37" cy="11" r="3.8" fill="#d4b676"/><path d="M3 36 18 9l9 15 5-8 13 20z" fill="currentColor"/><path class="cap" d="M18 9l-4.6 8 3.2-1.6 2 3 2.5-3 2.6 2z" fill="#cfe3f0"/><path class="rv2" d="M3 42q7-3.5 14 0t14 0 14 0" stroke="#7fb0cf" stroke-width="2.2" stroke-linecap="round"/></svg>`;
@@ -50,14 +52,20 @@ ${LIVE?'':'<div class="preview-tag">PREVIEW BUILD · not published</div>'}
   <div class="in">
     <a class="logo" href="/">${logoSvg}<span>Hamta<small>Homestay · Manali</small></span></a>
     <nav class="nav" aria-label="Main">
-      ${NAV.map(([f,l])=>`<a href="/${f}"${file===f?' aria-current="page"':''}>${l}</a>`).join('')}
+      <div class="nav-grp">
+        <a href="/stay"${STAY_FILES.includes(file)?' aria-current="page"':''} aria-haspopup="true">Stay</a>
+        <div class="nav-sub" role="menu" aria-label="Stay options">
+          ${NAV_STAY.map(([h,l])=>`<a href="${h}">${l}</a>`).join('')}
+        </div>
+      </div>
+      ${NAV_TOP.map(([f,l])=>`<a href="/${f}"${file===f?' aria-current="page"':''}>${l}</a>`).join('')}
       <a class="btn btn-gold" href="/book">Book your stay</a>
     </nav>
     <button class="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
 <div class="sheet" aria-label="Menu">
-  ${NAV.map(([f,l])=>`<a href="/${f}">${l}</a>`).join('')}<a href="/book" style="color:var(--gold-2)">Book your stay</a>
+  <a href="/stay">Stay</a><a href="/monthly-stay">Monthly</a><a href="${WK}/">Workation</a><a href="/groups">Groups</a>${NAV_TOP.map(([f,l])=>`<a href="/${f}">${l}</a>`).join('')}<a href="/book" style="color:var(--gold-2)">Book your stay</a>
 </div>
 <main id="main">
 ${body}
