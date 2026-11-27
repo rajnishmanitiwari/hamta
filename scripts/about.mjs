@@ -10,13 +10,15 @@ export default function about({img,pageHero,PH}){
 <section><div class="wrap ab-grid">${PH.strip.map(([n,a])=>`<figure class="rv">${img(n,a,{sizes:'(max-width:860px) 46vw, 30vw'})}</figure>`).join('')}</div></section>
 <section class="facil"><div class="wrap">
  <p class="kicker">The view</p>
- <div class="ab-views"><figure class="rv">${img('window-view','View from a Hamta homestay window over pine trees, rooftops and the valley',{sizes:'(max-width:860px) 92vw, 46vw'})}</figure><figure class="rv d1">${img('window-view-2','Another view from a homestay window, cedar trees and snow peaks beyond',{sizes:'(max-width:860px) 92vw, 46vw'})}</figure></div>
+ <div class="ab-full"><figure class="rv">${img('abt-window-1','HAMTA Homestay lettering over pine forest and mountains seen from a homestay window',{sizes:'(max-width:860px) 92vw, 760px'})}</figure><figure class="rv">${img('abt-window-2','HAMTA Homestay lettering over cedar trees, hills and clouds seen from a homestay window',{sizes:'(max-width:860px) 92vw, 760px'})}</figure></div>
  <p class="note">Views from the homestay windows.</p>
  <p class="kicker" style="margin-top:36px">Nearby views</p>
- <div class="ab-views"><figure class="rv">${img('view-3','A river running below snow-dusted mountains, nearby',{sizes:'(max-width:860px) 92vw, 46vw'})}</figure><figure class="rv d1">${img('night-nearby','Night view nearby, a lit venue beside a river',{sizes:'(max-width:860px) 92vw, 46vw'})}</figure></div>
- <p class="note">Mountain views and a night view close to the homestay.</p>
+ <div class="ab-full"><figure class="rv ab-tall">${img('abt-view-2','HAMTA Homestay lettering over snow-capped peaks and a valley with autumn trees, a nearby view',{sizes:'(max-width:860px) 92vw, 520px'})}</figure><figure class="rv">${img('abt-view-3','HAMTA Homestay lettering over a river below snowy mountains, a nearby view',{sizes:'(max-width:860px) 92vw, 760px'})}</figure></div>
+ <p class="note">Mountain views close to the homestay.</p>
  <p class="kicker" style="margin-top:36px">Places and activities guests go to</p>
  <div class="ab-views"><figure class="rv">${img('act-1','A paraglider above snow-dusted mountains and pine forest',{sizes:'(max-width:860px) 92vw, 46vw'})}</figure><figure class="rv d1">${img('act-2','A rider on a motorcycle outside a glass-fronted building with prayer flags, snow peaks behind',{sizes:'(max-width:860px) 92vw, 46vw'})}</figure></div>
+ <div class="ab-full"><figure class="rv ab-tall">${img('night-nearby','Night view nearby, a lit venue beside a river',{sizes:'(max-width:860px) 92vw, 520px'})}</figure></div>
+ <p class="note">A night view nearby.</p>
 </div></section>
 <section class="rates"><div class="wrap">
  <p class="kicker">Rooms and rates</p>

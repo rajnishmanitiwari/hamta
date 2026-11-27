@@ -449,3 +449,7 @@ label small{font-weight:400;color:#6b7782;letter-spacing:0}label em{font-weight:
 .strips:not(:hover) .strip-i:not(.on) .cap b,.strips:hover .strip-i:not(:hover) .cap b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:clamp(18px,1.9vw,28px);white-space:nowrap}
 .strips:not(:hover) .strip-i:not(.on) .cap i,.strips:hover .strip-i:not(:hover) .cap i{display:none}}
 .strip-i .cap b,.strip-i .cap i{text-shadow:0 1px 12px rgba(0,0,0,.55)}
+/* about: lettered photos keep their natural ratio so the text is never cropped */
+.ab-full{display:grid;gap:clamp(14px,2.4vw,26px);margin-top:14px;max-width:820px}.ab-full figure{aspect-ratio:auto!important}.ab-full img{width:100%;height:auto!important;display:block;aspect-ratio:auto}.ab-full .ab-tall{max-width:520px}
+.ab-full figure{overflow:visible!important;background:none!important;filter:drop-shadow(0 16px 18px rgba(24,44,62,.13)) drop-shadow(0 2px 4px rgba(24,44,62,.06))}
+.ab-full figure img{border-radius:26px;-webkit-mask-image:var(--bm);-webkit-mask-composite:source-in;mask-image:var(--bm);mask-composite:intersect}
