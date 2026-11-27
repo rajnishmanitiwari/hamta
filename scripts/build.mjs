@@ -14,7 +14,9 @@ const IG=''; // Instagram URL: empty until owner confirms the account
 const img=(n,alt,{cls='',eager=false,sizes='(max-width:860px) 92vw, 50vw'}={})=>
   `<img class="${cls}" src="/assets/img/${n}.webp" srcset="/assets/img/${n}-sm.webp 800w, /assets/img/${n}.webp 1600w" sizes="${sizes}" alt="${alt}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 
-const NAV=[['stay','Stay'],['monthly-stay','Monthly'],['groups','Groups'],['experiences','Around'],['menu','Menu'],['gallery','Gallery'],['handbook','Handbook']];
+const NAV=[['stay','Stay'],['monthly-stay','Monthly'],['groups','Groups'],['events','Events'],['residency','Residency'],['gallery','Gallery']];
+const pinDefs=`<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><radialGradient id="pw-g" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#f1dca4"/><stop offset=".55" stop-color="#c79c52"/><stop offset="1" stop-color="#8a6a2f"/></radialGradient><symbol id="pw-pin" viewBox="0 0 40 54"><ellipse cx="22" cy="49" rx="9" ry="3" fill="#000" opacity=".18"/><path d="M20 28v21" stroke="#9aa0a3" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="16" r="13" fill="url(#pw-g)"/><circle cx="15.5" cy="11" r="4.2" fill="#fff" opacity=".6"/></symbol></defs></svg>`;
+const pcard=(n,alt,cap,{cls='',ar='4/3',r='0deg',dy='0px',sizes='(max-width:700px) 46vw, 32vw'}={})=>`<figure class="pcard ${cls}" style="--r:${r};--dy:${dy};--ar:${ar}"><svg class="pcpin" viewBox="0 0 40 54" aria-hidden="true"><use href="#pw-pin"/></svg><div class="ph"><img src="/assets/img/${n}-sm.webp" srcset="/assets/img/${n}-sm.webp 800w, /assets/img/${n}.webp 1600w" sizes="${sizes}" alt="${alt}" loading="lazy" decoding="async"></div>${cap?`<figcaption>${cap}</figcaption>`:''}</figure>`;
 const logoSvg=`<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle class="sun" cx="37" cy="11" r="3.8" fill="#d4b676"/><path d="M3 36 18 9l9 15 5-8 13 20z" fill="currentColor"/><path class="cap" d="M18 9l-4.6 8 3.2-1.6 2 3 2.5-3 2.6 2z" fill="#cfe3f0"/><path class="rv2" d="M3 42q7-3.5 14 0t14 0 14 0" stroke="#7fb0cf" stroke-width="2.2" stroke-linecap="round"/></svg>`;
 
 function layout({file,title,desc,body,light=false,schema='',ogimg='og',noindex=false}){
@@ -42,6 +44,7 @@ ${schema}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+${pinDefs}
 ${LIVE?'':'<div class="preview-tag">PREVIEW BUILD · not published</div>'}
 <header class="hdr${light?' light':''}">
   <div class="in">
@@ -65,7 +68,7 @@ ${fabHtml}
     <div class="g">
       <div><div class="big">Hamta</div><p style="margin-top:14px;max-width:34ch;opacity:.8">Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.</p></div>
       <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="https://workation.hamta.in/">Workation</a><a href="/book">Request a booking</a></div>
-      <div><p class="fh">Guests</p><a href="/menu">Menu</a><a href="/handbook">Handbook</a><a href="/experiences">Around Hamta</a><a href="/gallery">Gallery</a></div>
+      <div><p class="fh">Explore</p><a href="/experiences">Around Hamta</a><a href="/menu">Menu</a><a href="/gallery">Gallery</a><a href="/events">Events</a><a href="/residency">Residency</a><a href="/handbook">Handbook</a></div>
       <div><p class="fh">Say hello</p><a href="/contact">Contact</a>${IG?`<a href="${IG}" rel="noopener" target="_blank">Instagram</a>`:''}<a data-email href="#" hidden></a><a data-support href="#" hidden></a><a data-phone href="#" hidden></a></div>
     </div>
     <div class="bot"><span>© <span data-year>2026</span> The Hamta Homestay, 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136</span><span><a style="display:inline" href="/terms">Terms</a> · <a style="display:inline" href="/cancellation-refund">Cancellation</a> · <a style="display:inline" href="/house-rules">House rules</a> · <a style="display:inline" href="/privacy">Privacy</a></span></div>
@@ -291,9 +294,17 @@ body:`${pageHero('Around Hamta','Experiences','lounge','Long wooden lounge with 
 pages.menu={title:'Food | The Hamta Homestay, Manali',desc:'Home cooking at The Hamta Homestay in Manali. Breakfast is included with daily stays. Our in-house chef cooks more meals and sweets on request.',
 body:`${pageHero('Food','Eat well','view-2','Snow-covered mountain range above an autumn valley with a pond, nearby')}
 <section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Home cooking from our own chef. Breakfast is included with daily stays. More meals and sweets on request.</p></div></section>
-<section class="rooms-ed"><div class="wrap">
-  <figure class="re-a rv">${img('lounge','Long wooden lounge with large windows and shared tables',{sizes:'(max-width:860px) 92vw, 56vw'})}</figure>
-  <figure class="re-b rv d1">${img('cupboard','Wooden cupboard in a Hamta room',{sizes:'(max-width:860px) 60vw, 26vw'})}</figure>
+<section class="pwall-sec"><div class="wrap">
+  <div class="sec-head" style="text-align:center"><p class="eyebrow">The kitchen wall</p><h2>Good, honest food</h2></div>
+  <div class="pwall">
+    ${pcard('food-paratha','Aloo paratha with a pat of butter on a plate','Aloo paratha',{cls:'pw-n',ar:'1/1',r:'-2deg'})}
+    ${pcard('food-siddu','Siddu, a steamed Himachali bread, sliced on a plate','Siddu, a Himachali favourite',{cls:'pw-n',ar:'1/1',r:'1.8deg',dy:'24px'})}
+    ${pcard('food-rajma','Rajma chawal, kidney beans with rice and salad','Rajma chawal',{cls:'pw-n',ar:'4/3',r:'-1.4deg'})}
+    ${pcard('food-dal','A bowl of dal makhani topped with cream and butter','Dal makhani',{cls:'pw-n',ar:'4/3',r:'2deg'})}
+    ${pcard('food-omelette','A masala omelette on a plate','Masala omelette',{cls:'pw-n',ar:'4/3',r:'-1.8deg',dy:'22px'})}
+    ${pcard('food-thali','A full Indian thali with curries, rice, bread and curd','A full thali',{cls:'pw-n',ar:'4/3',r:'1.4deg'})}
+  </div>
+  <p class="note" style="text-align:center;margin-top:20px">Representative dishes from free-license photos (Wikimedia Commons). Our chef's own menu and photos from our kitchen are on the way.</p>
 </div></section>
 <section class="rates"><div class="wrap narrow">
   <p class="kicker">The menu</p>
@@ -302,19 +313,82 @@ body:`${pageHero('Food','Eat well','view-2','Snow-covered mountain range above a
   <div style="margin-top:34px"><a class="btn btn-dark" href="/book">Request your stay</a></div>
 </div></section>`};
 
-/* HANDBOOK */
-pages.handbook={title:'Guest Handbook | The Hamta Homestay, Manali',desc:'Everything to know for your stay at The Hamta Homestay, Manali: arrival, rooms, meals, Wi-Fi, mountain tips and house notes.',
-body:`${pageHero('Guest handbook','Before and during your stay','view-3','A river running below snow-dusted mountains, nearby')}
-<section><div class="wrap hb" style="max-width:860px">
-  <p class="lead">A short guide for your stay. Specific details are shared by your host when your booking is confirmed.</p>
-  <div class="toc"><a href="#arrive">Arrival</a><a href="#room">Your stay</a><a href="#food">Food</a><a href="#work">Work &amp; Wi-Fi</a><a href="#mountain">Mountain tips</a><a href="#help">Help</a></div>
+/* HANDBOOK - structure and section template adapted from the AltSpace handbook (altspaced.com/handbook), rewritten in Hamta's own words. Details the owner still owes us stay as "coming soon" placeholders. No photos on this page, per the owner's 28 Nov instruction. */
+pages.handbook={title:'Guest Handbook | The Hamta Homestay, Manali',desc:'The Hamta Homestay guest handbook: arrival, house notes, Wi-Fi, dining timings, local experiences, local services and contact for your stay in Manali.',light:true,
+body:`<section style="padding-top:140px"><div class="wrap hb" style="max-width:860px">
+  <p class="eyebrow">Guest handbook</p><h1 style="font-size:clamp(38px,5vw,64px);margin:12px 0 26px">The Hamta Handbook</h1>
+  <p class="lead">Everything to know before and during your stay. A few details are still being written and will appear here soon. Your host shares the rest when your booking is confirmed.</p>
+  <div class="toc"><a href="#arrive">Arrival</a><a href="#stay">Your stay</a><a href="#dos">Do&rsquo;s &amp; don&rsquo;ts</a><a href="#community">Community</a><a href="#wifi">Wi-Fi</a><a href="#dining">Dining</a><a href="#cafe">Cafe</a><a href="#experiences">Experiences</a><a href="#services">Services</a><a href="#cafes">Cafes</a><a href="#mountain">Mountain tips</a><a href="#contact-hb">Contact</a></div>
   <h2 id="arrive">Arrival</h2><p>We are at 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136. Share your arrival time and we guide you in. Check-in is from 12 PM and check-out is at 11 AM the next day. You are welcome to arrive at any time of day, with no extra charge. Mountain roads and weather can slow you down, so plan some buffer.</p>
-  <h2 id="room">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹500 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
-  <h2 id="food">Food</h2><p>Our cook prepares meals on request. See <a href="/menu" style="text-decoration:underline">food</a>. Tell us what you like and any dietary needs. Breakfast is included with daily stays. Other meals are extra unless you take the full meal package.</p>
-  <h2 id="work">Work &amp; Wi-Fi</h2><p>Wi-Fi and constant electricity are available. The shared lounge has work tables. Hill internet can dip in bad weather, so keep a backup plan for critical calls.</p>
+  <h2 id="stay">Your stay</h2><ul><li>Each room has a double bed and hosts two guests. A third guest fits on an extra mattress, ask us.</li><li>A cleaner and a cook are available. Tell us what you need.</li><li>Dogs live on site. Guest pets, children and unmarried couples are welcome, with no limit. Alcohol is accepted.</li><li>Free laundry with our washing machine.</li><li>Every room has a kettle, a geyser in the washroom and mirrors.</li><li>The property is non-smoking throughout.</li><li>Free parking on site. There is road access to the property. Wheelchair and step-free access are not confirmed, so please ask us before you book.</li><li>Facilities include a garden, shared kitchen, shared lounge with TV area and a games room.</li><li>Heater electricity is ₹500 per day, or ₹3,000 per month for monthly guests, only if you use one.</li><li>Yoga and meditation sessions are not included in the room price.</li></ul>
+  <h2 id="dos">Do&rsquo;s and don&rsquo;ts</h2><ul><li>Enjoy the house to the fullest, and responsibly.</li><li>Join in when the house does something together, but not at the expense of your work.</li><li>Say hello to the people sharing the house. A smile and a greeting never hurt.</li><li>Be kind and considerate to other guests.</li><li>Please do not smoke anywhere on the property.</li><li>Keep the noise low, especially in the shared lounge and work areas.</li></ul>
+  <h2 id="community">Our campus community</h2><p class="tbd">Details coming soon.</p>
+  <h2 id="wifi">Wi-Fi</h2><p>Free Wi-Fi covers the rooms and the shared lounge. The network name and password are shared with you when you arrive.</p>
+  <h2 id="dining">Dining hall timings and meals</h2><p>Breakfast is included with daily stays. Other meals are cooked on request, or with the full meal package.</p><p class="tbd">Dining timings coming soon.</p>
+  <h2 id="cafe">Cafe menu, timings and prices</h2><p class="tbd">Details coming soon.</p>
+  <h2 id="experiences">Local experiences guide</h2><p class="tbd">Details coming soon. Walks, treks, temples, viewpoints and days out around the house will be listed here.</p>
+  <h2 id="services">Local services</h2><p class="tbd">Details coming soon. Cab services, bike rentals and laundry services around the house will be listed here.</p>
+  <h2 id="cafes">Cafes and restaurants around</h2><p class="tbd">Details coming soon.</p>
   <h2 id="mountain">Mountain tips</h2><ul><li>Layers beat one big jacket. Evenings are cold even after a warm day.</li><li>Altitude: drink water, go slow on the first day.</li><li>Check weather and road status before trekking. Use licensed local guides for long routes.</li></ul>
-  <h2 id="help">Help</h2><p>Message or call your host Kabir on WhatsApp at +91 62398 15892. See also <a href="/house-rules" style="text-decoration:underline">house rules</a>.</p>
+  <h2 id="contact-hb">Campus contact</h2><p>Your host: Kabir, on WhatsApp at +91 62398 15892. Bookings and questions: hello@hamta.in. Help with an existing stay: support@hamta.in.</p><p>The Hamta Homestay, 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136. Plus code 45V6+J9 Hallan-i.</p><p>See also <a href="/house-rules" style="text-decoration:underline">house rules</a>.</p>
 </div></section>`};
+
+/* EVENTS */
+pages.events={title:'Events at The Hamta Homestay, Manali | Community, Webinars, Trips, Hackathons',desc:'Community events for niche groups, webinars, trips and hackathons at The Hamta Homestay in Manali. Everything coming up at the house, listed in one place.',
+body:`${pageHero('Events at Hamta','Gatherings at the house','night-nearby','A lit venue beside a river at night, near The Hamta Homestay')}
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Community events for niche groups, webinars, trips out into the mountains, and hackathons. All of it listed here, in one place.</p></div></section>
+<section class="rates"><div class="wrap">
+  <p class="kicker">What we host</p>
+  <div class="cols3 light-cols" style="margin-top:8px">
+    <div class="pillar"><h3>Community events</h3><p>Gatherings for niche communities at the house.</p></div>
+    <div class="pillar"><h3>Webinars</h3><p>Sessions worth joining from the mountains.</p></div>
+    <div class="pillar"><h3>Trips</h3><p>Trips and outings that start at the house.</p></div>
+    <div class="pillar"><h3>Hackathons</h3><p>Build sprints and hackathons, hosted at Hamta.</p></div>
+  </div>
+</div></section>
+<section class="pwall-sec"><div class="wrap">
+  <div class="sec-head" style="text-align:center"><p class="eyebrow">The board</p><h2>Upcoming events</h2></div>
+  <div class="evlist">
+    <article class="ev rv"><span class="num">01</span><div><p class="meta">Dates to be announced</p><h3>Our first events are being planned<span class="tag">Coming soon</span></h3><p>Community events, webinars, trips and hackathons will be pinned here with dates, details and how to join, as each one is confirmed.</p></div></article>
+  </div>
+  <p class="note" style="text-align:center;margin-top:24px">Want to hear first? <a href="/contact" style="text-decoration:underline">Tell us what you would come for</a>.</p>
+</div></section>
+<section><div class="wrap"><div class="box" style="display:grid;gap:18px;text-align:center;justify-items:center;background:var(--sky);border:0">
+  <h2>Bring your community to Hamta.</h2><p class="lead">Planning a meetup, an offsite or a hackathon? The house holds groups of 15 to 20.</p>
+  <div><a class="btn btn-dark" href="/groups">Group stays</a> <a class="btn btn-line" href="/contact">Contact us</a></div>
+</div></div></section>`};
+
+/* RESIDENCY */
+pages.residency={title:'The Hamta Residency: 10 Days in Manali for Founders & Creators',desc:'A quarterly 10 day residency at The Hamta Homestay in Manali for founders, creators and community heads. Your stay is sponsored; you cover only your food. Entry by application and selection.',
+body:`${pageHero('The Hamta Residency','Ten days, every quarter','window-view-2','Cedar trees and snow peaks seen from a Hamta homestay window')}
+<section class="s-intro"><div class="wrap narrow"><p class="big-words" data-words>Ten days at Hamta, every quarter, almost entirely on us. You cover your food. We sponsor your stay.</p></div></section>
+<section class="rates"><div class="wrap">
+  <p class="kicker">Who it is for</p>
+  <div class="cols3 light-cols" style="margin-top:8px">
+    <div class="pillar"><h3>Founders</h3><p>People building something of their own, who get things done.</p></div>
+    <div class="pillar"><h3>Creators</h3><p>People making things worth sharing.</p></div>
+    <div class="pillar"><h3>Community heads</h3><p>People who bring others together.</p></div>
+  </div>
+  <p class="note" style="margin-top:26px">We look for cool, talented, ambitious and driven people who can work on their own ideas, and who help Hamta grow while they are here.</p>
+</div></section>
+<section class="band"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">How it works</p><h2>Apply, get selected, come up</h2></div>
+  <div class="steps4">
+    <div class="pillar rv"><b>01</b><h3>Apply</h3><p>Tell us who you are and what you are working on.</p></div>
+    <div class="pillar rv d1"><b>02</b><h3>Selection</h3><p>We review every application and choose each cohort ourselves.</p></div>
+    <div class="pillar rv d2"><b>03</b><h3>Ten days</h3><p>Live and work at Hamta. Your stay and everything else is on us, food is on you.</p></div>
+    <div class="pillar rv d3"><b>04</b><h3>Give back</h3><p>Share your work, your skills and your ideas with the house, and help Hamta grow.</p></div>
+  </div>
+</div></section>
+<section><div class="wrap split">
+  <div class="rv"><p class="eyebrow">The deal</p><h2 style="margin:14px 0 20px">About 90% on the house.</h2>
+  <ul class="ticks"><li>A 10 day stay at The Hamta Homestay, every quarter</li><li>Your stay is sponsored by us</li><li>You cover only your own food</li><li>Everything else is on the house</li><li>Limited to selected applicants</li></ul></div>
+  <div class="frame wide reveal-img">${img('lounge','Long wooden lounge with large windows and shared tables')}</div>
+</div></section>
+<section><div class="wrap"><div class="box" style="display:grid;gap:18px;text-align:center;justify-items:center;background:var(--sky);border:0">
+  <h2>The first cohort is being planned.</h2><p class="lead">Applications are open. Tell us what you are building.</p>
+  <div><a class="btn btn-dark" href="/contact">Apply through the contact page</a></div>
+</div></div></section>`};
 
 /* GALLERY */
 const G0=[
@@ -327,13 +401,13 @@ pages.gallery={title:'Photo Gallery | The Hamta Homestay, Manali',desc:'Photos o
 body:`${pageHero('Gallery','See the place','view-3','A river running below snow-dusted mountains, nearby')}
 <section><div class="wrap">
   <div class="chips" role="group" aria-label="Filter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="Rooms" aria-pressed="false">Rooms</button><button class="chip" data-f="Lounge" aria-pressed="false">Lounge</button><button class="chip" data-f="Exterior" aria-pressed="false">Building</button><button class="chip" data-f="Nearby" aria-pressed="false">Nearby views</button><button class="chip" data-f="Activities" aria-pressed="false">Activities</button></div>
-  <div class="mosaic">${G.map(([n,c,a])=>`<button data-c="${c==='Lounge'?'Lounge':c}" data-full="/assets/img/${n}.webp" aria-label="Open photo: ${a}"><img src="/assets/img/${n}-sm.webp" alt="${a}" loading="lazy" decoding="async"></button>`).join('')}</div>
+  <div class="mosaic pwall">${G.map(([n,c,a],i)=>`<button data-c="${c}" data-full="/assets/img/${n}.webp" aria-label="Open photo: ${a}" style="--r:${['-1.6deg','1.8deg','-2.2deg','2.2deg','-1.2deg','1.4deg'][i%6]}"><svg class="pcpin" viewBox="0 0 40 54" aria-hidden="true"><use href="#pw-pin"/></svg><img src="/assets/img/${n}-sm.webp" alt="${a}" loading="lazy" decoding="async"></button>`).join('')}</div>
   <p class="note">Photos of The Hamta Homestay and the views nearby.</p>
 </div></section>
 <div class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="x" aria-label="Close">×</button><button class="p" aria-label="Previous">‹</button><img alt=""><button class="n" aria-label="Next">›</button></div>`};
 
 import bodiesFn from './bodies.mjs';
-const B=bodiesFn(img,{pageHero});
+const B=bodiesFn(img,{pageHero,pcard});
 pages.index.body=B.index;pages.stay.body=B.stay;pages['monthly-stay'].body=B.monthly;pages.groups.body=B.groups;pages.experiences.body=B.exp;
 /* BOOK */
 pages.book={title:'Request a Stay | The Hamta Homestay, Manali',desc:'Request a daily, monthly or group stay at The Hamta Homestay in Manali. We reply with availability and a final quote.',light:true,
@@ -386,12 +460,12 @@ body:`<section style="padding-top:130px"><div class="wrap">
   <div class="split" style="align-items:start">
     <form class="form box" id="contactform"><input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label>Name<input name="name" required autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label>
-      <label>WhatsApp number <em>(optional)</em><input type="tel" name="phone" autocomplete="tel"></label><label>About<select name="topic"><option>A question about a stay</option><option>A group or team enquiry</option><option>Monthly stay</option><option>Something else</option></select></label><label>Message<textarea name="message" required></textarea></label>
+      <label>WhatsApp number <em>(optional)</em><input type="tel" name="phone" autocomplete="tel"></label><label>About<select name="topic"><option>A question about a stay</option><option>A group or team enquiry</option><option>Monthly stay</option><option>The Hamta Residency</option><option>An event, webinar or hackathon</option><option>Something else</option></select></label><label>Message<textarea name="message" required></textarea></label>
       <p class="note" style="margin:0">Your message goes to Hamta by email through FormSubmit, a third-party form service. See <a href="/privacy" style="text-decoration:underline">privacy</a>.</p><button class="btn btn-dark" type="submit">Send message</button><div id="form-msg" class="msg" hidden role="status"></div></form>
     <div class="rv"><h3>Find us</h3><p style="margin:12px 0 4px;color:var(--ink-2)">The Hamta Homestay<br>15th Mile, Hallan-i, Manali<br>Himachal Pradesh 175136, India<br>Plus code 45V6+J9 Hallan-i</p><p style="margin:6px 0;color:var(--ink-2);font-size:14px">Bookings and questions: hello@hamta.in. Help with an existing stay: support@hamta.in.</p><p style="margin:10px 0;color:var(--ink-2)">Your host: Kabir</p>
       <p style="margin:14px 0"><a data-email href="#" hidden style="text-decoration:underline"></a><br><a data-support href="#" hidden style="text-decoration:underline"></a><br><a data-phone href="#" hidden style="text-decoration:underline"></a></p>
       <p>${IG?`<a class="btn btn-line" href="${IG}" target="_blank" rel="noopener">Instagram</a> `:''}<a class="btn btn-line" href="${MAPS}" target="_blank" rel="noopener">Open in Google Maps</a></p>
-      <div class="frame wide reveal-img" style="margin-top:28px">${img('night','Hamta Homestay lit up at night among flowers')}</div></div>
+      <div class="frame wide reveal-img" style="margin-top:28px">${img('contact-mountain','Mountains, a lake and a river near The Hamta Homestay, with the Hamta Homestay name on the photo')}</div></div>
   </div>
 </div></section>`};
 
