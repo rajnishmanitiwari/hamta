@@ -62,7 +62,7 @@ ${fabHtml}
 <footer class="ftr">
   <div class="wrap">
     <div class="g">
-      <div><div class="big">Hamta</div><p style="margin-top:14px;max-width:34ch;opacity:.8">A mountain homestay in Manali for a night, a month, or a whole team. Warm hosts, home cooking, quiet views.</p></div>
+      <div><div class="big">Hamta</div><p style="margin-top:14px;max-width:34ch;opacity:.8">Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.</p></div>
       <div><p class="fh">Stay</p><a href="/stay">Rooms &amp; rates</a><a href="/monthly-stay">Monthly stays</a><a href="/groups">Groups</a><a href="/book">Request a booking</a></div>
       <div><p class="fh">Guests</p><a href="/menu">Menu</a><a href="/handbook">Handbook</a><a href="/experiences">Around Hamta</a><a href="/gallery">Gallery</a></div>
       <div><p class="fh">Say hello</p><a href="/contact">Contact</a>${IG?`<a href="${IG}" rel="noopener" target="_blank">Instagram</a>`:''}<a data-email href="#" hidden></a><a data-support href="#" hidden></a><a data-phone href="#" hidden></a></div>
@@ -81,7 +81,7 @@ const pageHero=(h,sub,image,alt)=>`<section class="page-hero" data-hero>${img(im
 
 const lodging=`<script type="application/ld+json">${JSON.stringify({
   "@context":"https://schema.org","@type":"LodgingBusiness","name":"The Hamta Homestay",
-  "description":"Mountain homestay in Manali, Himachal Pradesh with daily and monthly stays, home-cooked meals on request, Wi-Fi, and Himalayan views.",
+  "description":"Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.",
   "url":SITE,"telephone":"+916239815892","email":"hello@hamta.in","geo":{"@type":"GeoCoordinates","latitude":32.1440721,"longitude":77.1609703},"hasMap":MAPS,"checkinTime":"12:00","checkoutTime":"11:00","petsAllowed":true,"numberOfRooms":8,"image":[`${SITE}/assets/img/ext-day.jpg`,`${SITE}/assets/img/hero-poster.jpg`],
   "address":{"@type":"PostalAddress","streetAddress":"15th Mile, Hallan-i","addressLocality":"Manali","addressRegion":"Himachal Pradesh","postalCode":"175136","addressCountry":"IN"},
   "priceRange":"INR 2000-3000 per night, INR 15000-30000 per month",
@@ -94,7 +94,7 @@ const pages={};
 
 /* HOME */
 pages.index={title:'The Hamta Homestay, Manali | Mountain stays by the night or month',
-desc:'A premium mountain homestay in Manali. Stay a night, a month or bring your team. Home-cooked meals, fast Wi-Fi, constant power and Himalayan views. Request your stay.',
+desc:"Your mountain home in Manali. Welcoming rooms, home-cooked meals and a slower pace, whether you're staying for a few nights or settling in for a month.",
 schema:lodging+faq([
  ['How much is a night at The Hamta Homestay in Manali?','A stay with breakfast included starts at INR 2,000 per room per night, for up to two guests. With the full meal package it is INR 2,500 for one guest and INR 3,000 for two. Peak dates around Christmas and New Year can cost more and are confirmed in writing.'],
  ['Can I stay for a month?','Yes. Monthly stays are INR 15,000 for one guest and INR 20,000 for two with breakfast included, and INR 24,000 or INR 30,000 with the full meal package. A cook and a cleaner are available.'],
