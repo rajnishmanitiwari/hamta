@@ -93,9 +93,9 @@
  .wk-tags li{min-width:0;flex:1 1 40%;padding:22px 12px 14px;font-size:20px}
  .wk-title{font-size:clamp(42px,14vw,64px)}
  .wk-cta .btn{flex:1 1 100%}
- .wk-strings{display:none}
+ .wk-wall>*{--dy:0px!important}
 }
-@media(prefers-reduced-motion:reduce),(hover:none){.js [data-pc],.js [data-pc] .pin,.js .wk-title span{transition-duration:.01s;transition-delay:0s}}
+@media(prefers-reduced-motion:reduce){.js [data-pc],.js [data-pc] .pin,.js .wk-title span{transition-duration:.01s;transition-delay:0s}}
 @media(prefers-reduced-motion:reduce){.js [data-pc]{transform:rotate(var(--r,0deg));opacity:1}.wk-big .w{opacity:1}.wk-thread{stroke-dashoffset:0!important}}
 /* programme, mission, 5R, pricing, faq */
 .wk-mission{padding:90px 0;background:linear-gradient(180deg,#dbe8ea,#f4f1ea);text-align:center}

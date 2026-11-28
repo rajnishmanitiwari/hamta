@@ -20,7 +20,7 @@ if(big){var words=big.textContent.trim().split(/\s+/);big.setAttribute('aria-lab
 var wall=d.querySelector('[data-wk-wall]'),path=wall&&wall.querySelector('.wk-thread');
 function layoutString(){
   if(!path)return;var W=wall.clientWidth,Hh=wall.clientHeight;var cards=[].slice.call(wall.querySelectorAll('.pc,.sn'));
-  if(innerWidth<=760||!cards.length)return;var wr=wall.getBoundingClientRect();
+  if(!cards.length)return;var wr=wall.getBoundingClientRect();
   var pts=cards.map(function(c){var r=c.getBoundingClientRect();return [r.left-wr.left+r.width/2,r.top-wr.top-4]});
   var dstr='M'+pts[0][0]+' '+pts[0][1];
   for(var i=1;i<pts.length;i++){var a=pts[i-1],b=pts[i];var my=Math.max(a[1],b[1])+40;dstr+=' Q'+((a[0]+b[0])/2)+' '+my+' '+b[0]+' '+b[1]}
