@@ -1,5 +1,6 @@
 // Static page generator: node scripts/build.mjs  -> writes *.html, sitemap.xml at repo root.
 import fs from 'node:fs';
+import {ver} from './assetver.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -41,7 +42,7 @@ ${(noindex||!LIVE)?'<meta name="robots" content="noindex,nofollow">':'<meta name
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/oswald/v57/TK3IWkUHHAIjg75cFRf3bXL8LICs1_Fv40pKlN4NNSeSASz7FmlWHYjMdZwl.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_qE6KnTOig.woff2"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=Oswald:wght@500;600&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css${ver('assets/css/site.css')}">
 ${schema}
 </head>
 <body>
@@ -82,9 +83,9 @@ ${fabHtml}
     <div class="bot"><span>© <span data-year>2026</span> The Hamta Homestay, 15th Mile, Hallan-i, Manali, Himachal Pradesh 175136</span><span><a style="display:inline" href="/terms">Terms</a> · <a style="display:inline" href="/cancellation-refund">Cancellation</a> · <a style="display:inline" href="/house-rules">House rules</a> · <a style="display:inline" href="/privacy">Privacy</a></span></div>
   </div>
 </footer>
-<script src="/assets/js/config.js${file==='book'?'?v=ht500':''}" defer></script>
-<script src="/assets/js/site.js${file==='book'?'?v=bk2':''}" defer></script>
-<script src="/assets/js/motion.js" defer></script>
+<script src="/assets/js/config.js${ver('assets/js/config.js')}" defer></script>
+<script src="/assets/js/site.js${ver('assets/js/site.js')}" defer></script>
+<script src="/assets/js/motion.js${ver('assets/js/motion.js')}" defer></script>
 </body>
 </html>`;
 }

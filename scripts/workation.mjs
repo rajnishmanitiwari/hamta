@@ -1,6 +1,7 @@
 // /workation: separate landing page for companies, organisations, teams, universities and remote workers.
 // A pinned-wall photo story with its own enquiry form. Not in nav or sitemap until the owner approves it.
 // Every claim below comes from the owner's own statements already used on the site. No package price or itinerary is stated.
+import {ver} from './assetver.mjs';
 const pin=`<svg class="pin" viewBox="0 0 40 54" aria-hidden="true"><use href="#wk-pin"/></svg>`;
 const card=({n,alt,cap,cls='',ar='4/3',r='0deg',dy='0px',pinned=true,tape=false})=>`<figure class="pc ${cls}${tape?' tape':''}" style="--r:${r};--dy:${dy};--ar:${ar}" data-pc>${pinned&&!tape?pin:''}<div class="ph"><img src="/assets/img/${n}-sm.webp" srcset="/assets/img/${n}-sm.webp 800w, /assets/img/${n}.webp 1600w" sizes="(max-width:760px) 46vw, 32vw" alt="${alt}" loading="lazy" decoding="async"></div><figcaption>${cap}</figcaption></figure>`;
 const note=({t,cls='',r='0deg',dy='0px',icon=''})=>`<aside class="sn ${cls}" style="--r:${r};--dy:${dy}" data-pc>${pin}${icon?`<svg class="ic" aria-hidden="true"><use href="#ic-${icon}"/></svg>`:''}<p>${t}</p></aside>`;
@@ -70,7 +71,7 @@ export default function workation(){
  return {title:'Workation in Manali: Work, Reset and Grow in Stillness | The Hamta Homestay',
  desc:'A 7 day, 7 night workation in Manali for teams, organisations, universities and remote workers. Slow down, work with intent and find peace in stillness.',
  light:true,schema:SCHEMA,ogimg:'og',
- body:`<link rel="stylesheet" href="/assets/css/workation.css">
+ body:`<link rel="stylesheet" href="/assets/css/workation.css${ver('assets/css/workation.css')}">
 ${symbols}
 <div class="wk">
 <section class="wk-hero" data-wk-hero>
@@ -210,5 +211,5 @@ ${SHOW_PRICES?`<div class="wk-tiers">
  </form></div>
 </div></section>
 </div>
-<script src="/assets/js/workation.js" defer></script>`};
+<script src="/assets/js/workation.js${ver('assets/js/workation.js')}" defer></script>`};
 }
